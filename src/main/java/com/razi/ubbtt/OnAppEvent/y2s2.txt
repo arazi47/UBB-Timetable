@@ -1,0 +1,105 @@
+Luni,8-10,,6/II,IE2,Curs,Medii de proiectare si programare,Lect. GACEANU Radu
+Luni,10-12,,6/II,IE2,Curs,Programare Web,Lect. STERCA Adrian
+Luni,16-18,,L336,921/2,Laborator,Medii de proiectare si programare,C.d.asociat SZEDERJESI-DRAGOMIR Andra
+Marti,8-10,,L306,921/1,Laborator,Medii de proiectare si programare,Lect. GACEANU Radu
+Marti,10-12,sapt. 1,C512,921,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Marti,14-16,,2/I,IE2,Curs,Inteligenta artificiala,Lect. MIHOC Tudor
+Marti,16-18,,2/I,IE2,Curs,Sisteme de gestiune a bazelor de date,Lect. SURDU Sabina
+Miercuri,8-10,sapt. 1,L302,921/1,Laborator,Sisteme de gestiune a bazelor de date,Drd. PETRUSEL Mara
+Miercuri,12-14,,2/I,IE2,Curs,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Miercuri,14-16,sapt. 2,A321,921,Seminar,Sisteme de gestiune a bazelor de date,Lect. SURDU Sabina
+Miercuri,16-18,sapt. 1,C510,921,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,8-10,sapt. 1,L301,921/1,Laborator,Ingineria sistemelor soft,Drd. Nutu Maria
+Joi,8-10,sapt. 2,L301,921/2,Laborator,Ingineria sistemelor soft,Drd. Nutu Maria
+Joi,10-12,,A311,IE2,Curs,Didactica Informaticii,Lect. MAGDAS Ioana
+Joi,12-14,,A308,IE2,Seminar,Didactica Informaticii,Lect. MAGDAS Ioana
+Joi,14-16,,6/II,921,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Vineri,12-14,,L301,921/1,Laborator,Programare Web,Asist. BADARINZA Ioan
+Vineri,14-16,sapt. 2,L336,921/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,14-16,sapt. 1,L336,921/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,16-18,,L308,921/2,Laborator,Programare Web,Lect. STERCA Adrian
+Vineri,18-20,sapt. 1,L339,921/2,Laborator,Sisteme de gestiune a bazelor de date,Drd. CRIVEI Liana
+Luni,14-16,,L308,922/1,Laborator,Programare Web,Lect. STERCA Adrian
+Luni,16-18,,L301,922/1,Laborator,Medii de proiectare si programare,Lect. GACEANU Radu
+Luni,18-20,sapt. 2,L302,922/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Luni,18-20,sapt. 1,L302,922/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Marti,8-10,sapt. 1,L336,922/1,Laborator,Sisteme de gestiune a bazelor de date,Lect. CIUCIU Ioana
+Marti,8-10,sapt. 2,L336,922/2,Laborator,Sisteme de gestiune a bazelor de date,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,C512,922,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Miercuri,14-16,sapt. 1,A321,922,Seminar,Sisteme de gestiune a bazelor de date,Lect. SURDU Sabina
+Miercuri,16-18,sapt. 2,C510,922,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 2,L002,922/1,Laborator,Ingineria sistemelor soft,Drd. Nutu Maria
+Joi,12-14,sapt. 1,L002,922/2,Laborator,Ingineria sistemelor soft,Drd. Nutu Maria
+Joi,14-16,,6/II,922,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Vineri,14-16,,L002,922/2,Laborator,Medii de proiectare si programare,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,16-18,,L302,922/2,Laborator,Programare Web,C.d.asociat SIPOS-LASCU Roxana
+Luni,14-16,,L301,923/1,Laborator,Medii de proiectare si programare,Lect. GACEANU Radu
+Luni,14-16,,L343,923/2,Laborator,Programare Web,Drd. CRISTEA Daniela
+Luni,16-18,sapt. 2,L302,923/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Luni,16-18,sapt. 1,L302,923/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Luni,18-20,,L301,923/2,Laborator,Medii de proiectare si programare,Lect. GACEANU Radu
+Luni,18-20,,L339,923/1,Laborator,Programare Web,Drd. CRISTEA Daniela
+Marti,10-12,sapt. 1,L336,923/1,Laborator,Sisteme de gestiune a bazelor de date,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,L336,923/2,Laborator,Sisteme de gestiune a bazelor de date,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,L338,923/1,Laborator,Ingineria sistemelor soft,Drd. MARINESCU Alexandru
+Marti,10-12,sapt. 1,L338,923/2,Laborator,Ingineria sistemelor soft,Drd. MARINESCU Alexandru
+Marti,18-20,sapt. 2,7/I,923,Seminar,Sisteme de gestiune a bazelor de date,Drd. PETRUSEL Mara
+Joi,10-12,sapt. 1,C510,923,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 1,C512,923,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,12-14,,6/II,923,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Luni,14-16,sapt. 2,L302,924/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Luni,14-16,sapt. 1,L302,924/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Luni,16-18,sapt. 2,L439,924/1,Laborator,Ingineria sistemelor soft,Drd. MARINESCU Alexandru
+Luni,16-18,sapt. 1,L439,924/2,Laborator,Ingineria sistemelor soft,Drd. MARINESCU Alexandru
+Marti,8-10,,L308,924/2,Laborator,Programare Web,Asist. BADARINZA Ioan
+Marti,10-12,,L306,924/1,Laborator,Medii de proiectare si programare,Lect. GACEANU Radu
+Marti,10-12,,L307,924/2,Laborator,Medii de proiectare si programare,Lect. SERBAN Camelia
+Miercuri,16-18,sapt. 2,A311,924,Seminar,Sisteme de gestiune a bazelor de date,Lect. SURDU Sabina
+Joi,8-10,,L336,924/1,Laborator,Programare Web,Asist. BADARINZA Ioan
+Joi,10-12,sapt. 2,C510,924,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 2,C512,924,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Joi,14-16,,6/II,924,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Vineri,14-16,sapt. 2,L306,924/1,Laborator,Sisteme de gestiune a bazelor de date,Drd. Andor Camelia
+Vineri,18-20,sapt. 2,L339,924/2,Laborator,Sisteme de gestiune a bazelor de date,Drd. CRIVEI Liana
+Luni,14-16,sapt. 1,L321,925/2,Laborator,Ingineria sistemelor soft,Drd. MARINESCU Alexandru
+Luni,16-18,,L339,925/2,Laborator,Programare Web,Drd. CRISTEA Daniela
+Luni,18-20,,L321,925/1,Laborator,Medii de proiectare si programare,Lect. POP Andreea
+Marti,10-12,sapt. 1,C510,925,Seminar,Sisteme de gestiune a bazelor de date,Asist. POP Emilia
+Miercuri,8-10,,L307,925/2,Laborator,Medii de proiectare si programare,Lect. SERBAN Camelia
+Joi,8-10,sapt. 2,L402,925/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Joi,12-14,sapt. 1,C510,925,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,18-20,sapt. 2,L306,925/1,Laborator,Sisteme de gestiune a bazelor de date,Drd. PETRUSEL Mara
+Joi,18-20,sapt. 1,L306,925/2,Laborator,Sisteme de gestiune a bazelor de date,Drd. PETRUSEL Mara
+Vineri,8-10,sapt. 1,C512,925,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,10-12,,L301,925/1,Laborator,Programare Web,Asist. BADARINZA Ioan
+Vineri,12-14,sapt. 2,L336,925/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,14-16,,2/I,925,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Vineri,16-18,sapt. 1,L002,925/1,Laborator,Ingineria sistemelor soft,Drd. BORODI Flavia
+Luni,14-16,sapt. 2,L321,926/1,Laborator,Ingineria sistemelor soft,Drd. MARINESCU Alexandru
+Luni,16-18,,L321,926/1,Laborator,Medii de proiectare si programare,Lect. POP Andreea
+Luni,18-20,,L336,926/2,Laborator,Medii de proiectare si programare,C.d.asociat SZEDERJESI-DRAGOMIR Andra
+Joi,10-12,sapt. 2,L002,926/2,Laborator,Ingineria sistemelor soft,Drd. Nutu Maria
+Joi,12-14,sapt. 2,C510,926,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,16-18,sapt. 2,L306,926/1,Laborator,Sisteme de gestiune a bazelor de date,Drd. PETRUSEL Mara
+Joi,16-18,sapt. 1,L306,926/2,Laborator,Sisteme de gestiune a bazelor de date,Drd. PETRUSEL Mara
+Joi,18-20,,L336,926/2,Laborator,Programare Web,C.d.asociat MORARU Alexandru
+Vineri,8-10,,L301,926/1,Laborator,Programare Web,Asist. BADARINZA Ioan
+Vineri,10-12,sapt. 2,L336,926/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,10-12,sapt. 1,L336,926/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,12-14,sapt. 1,L001,926,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,14-16,sapt. 2,7/I,926,Seminar,Sisteme de gestiune a bazelor de date,Lect. SURDU Sabina
+Vineri,16-18,,2/I,926,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Marti,8-10,sapt. 2,C510,927,Seminar,Inteligenta artificiala,Lect. MIHOC Tudor
+Miercuri,16-18,sapt. 1,A322,927,Seminar,Sisteme de gestiune a bazelor de date,Lect. SURDU Sabina
+Joi,8-10,sapt. 1,L402,927/2,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Joi,10-12,sapt. 1,L002,927/2,Laborator,Ingineria sistemelor soft,Drd. Nutu Maria
+Joi,14-16,sapt. 2,L001,927,Seminar,Ingineria sistemelor soft,Conf. CHIOREAN Dan
+Joi,16-18,,9/I,927,Seminar,Limba engleza (2),Drd. Nemes Borbala
+Vineri,8-10,sapt. 2,L336,927/1,Laborator,Inteligenta artificiala,Lect. MIHOC Tudor
+Vineri,10-12,,L002,927/2,Laborator,Medii de proiectare si programare,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,12-14,,L002,927/1,Laborator,Medii de proiectare si programare,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,14-16,sapt. 1,L306,927/1,Laborator,Ingineria sistemelor soft,Drd. BORODI Flavia
+Vineri,16-18,sapt. 1,L339,927/1,Laborator,Sisteme de gestiune a bazelor de date,Drd. CRIVEI Liana
+Vineri,16-18,sapt. 2,L339,927/2,Laborator,Sisteme de gestiune a bazelor de date,Drd. CRIVEI Liana
+Vineri,18-20,,L302,927/1,Laborator,Programare Web,C.d.asociat SIPOS-LASCU Roxana
+Vineri,18-20,,L343,927/2,Laborator,Programare Web,C.d.asociat MORARU Alexandru
