@@ -138,13 +138,13 @@
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Note title</span>
             </div>
-            <input type="text" class="form-control" placeholder="Note title" aria-label="Username" aria-describedby="basic-addon1" th:field="*{title}">
+            <input type="text" class="form-control" placeholder="Note title" required="required" aria-label="Username" aria-describedby="basic-addon1" th:field="*{title}">
         </div>
         <br>
         <br>
 
         <div class="form-group">
-            <textarea class="form-control" rows="10" placeholder="Note message" th:field="*{message}"></textarea>
+            <textarea class="form-control" rows="10" placeholder="Note message" required="required" th:field="*{message}"></textarea>
         </div>
 
         <div class="row">
