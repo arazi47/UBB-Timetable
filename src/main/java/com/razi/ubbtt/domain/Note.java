@@ -48,5 +48,6 @@ public class Note {
     private String author;
 
     @Column(name = "type")
-    private String type;
+    @Builder.Default
+    private String type = "1";
 }
