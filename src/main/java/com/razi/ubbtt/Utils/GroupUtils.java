@@ -30,7 +30,7 @@ public class GroupUtils {
         return new ArrayList<>(List.of(group, group + "/1", group + "/2"));
     }
 
-    public static List<String> getGroupAndSubgroupAndYearAsList(String group) {
+    public static List<String> getGroupAndSubgroupsAndYearAsList(String group) {
         List<String> groupList = getGroupAndSubgroupsAsList(group);
         groupList.add(getYearFromGroup(group));
         return groupList;

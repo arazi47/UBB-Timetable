@@ -50,4 +50,12 @@ public class Week {
 
         return null;
     }
+
+    boolean isEven() {
+        return this.weekNumber % 2 == 0;
+    }
+
+    boolean isOdd() {
+        return this.weekNumber % 2 != 0;
+    }
 }

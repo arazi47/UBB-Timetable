@@ -196,22 +196,21 @@ public class LoginController {
         // LinkedHashMap retains the order of insertion
         List<Map<Course, Note>> courseNoteMapList = generateAllCourseNoteMaps();
 
-        model.addAttribute("courseNoteMap", courseNoteMapList.get(0));
+        model.addAttribute("courseNoteMap", courseNoteMapList.get(0)); // TODO rename this to courseNoteMap921
         model.addAttribute("courseNoteMap926", courseNoteMapList.get(1));
+
+        // TODO add the rest of the groups
 
         return "admin/home";
     }
 
-    public Map<Course, Note> generateCourseNoteMapForGroup(String group, String year) {
-        // Subgroups
-        String sg1 = group + "/1";
-        String sg2 = group + "/2";
-
+    public Map<Course, Note> generateCourseNoteMapForGroup(String group) {
+        List<String> groupAndSubgroupsAndYear = GroupUtils.getGroupAndSubgroupsAndYearAsList(group);
         // LinkedHashMap retains the order of insertion
         Map<Course, Note> courseNoteMap = new LinkedHashMap<>();
-        for (Course c: sortCourses(courseRepository.getCoursesForGroupForCurrentSemesterAndWeek(group, sg1, sg2, year, weekRepository.getCurrentSemester()))) {
+        for (Course c: sortCourses(courseRepository.getCoursesForGroupForCurrentSemesterAndWeek(group, groupAndSubgroupsAndYear.get(1), groupAndSubgroupsAndYear.get(2), groupAndSubgroupsAndYear.get(3), weekRepository.getCurrentSemester()))) {
             boolean courseAdded = false;
-            for (Note n: noteRepository.getNotesForCurrentSemesterAndWeekAndGroupOrYear(weekRepository.getCurrentSemester(), weekRepository.getCurrentWeek().getWeekNumber(), new ArrayList<>(GroupUtils.getGroupAndSubgroupAndYearAsList("926")))) {
+            for (Note n: noteRepository.getNotesForCurrentSemesterAndWeekAndGroupOrYear(weekRepository.getCurrentSemester(), weekRepository.getCurrentWeek().getWeekNumber(), new ArrayList<>(GroupUtils.getGroupAndSubgroupsAndYearAsList("926")))) {
                 /*
                 System.out.println("============================");
                 System.out.println(c.getDiscipline() + " == " + n.getDiscipline());
@@ -221,6 +220,7 @@ public class LoginController {
                 */
 
                 if (c.getDiscipline().equals(n.getDiscipline()) && c.getGroupOrYear().equals(n.getGroupOrYear()) && c.getType().equals(n.getCourseType())) {
+                    /*
                     System.out.println("ADDED");
                     System.out.println("============================");
                     System.out.println("Course ID = " + c.getId());
@@ -229,6 +229,7 @@ public class LoginController {
                     System.out.println(c.getGroupOrYear() + " == " + n.getGroupOrYear());
                     System.out.println(c.getType() + " == " + n.getCourseType());
                     System.out.println("============================");
+                     */
                     courseNoteMap.put(c, n);
                     if (!courseAdded)
                         courseAdded = true;
@@ -244,8 +245,8 @@ public class LoginController {
 
     public List<Map<Course, Note>> generateAllCourseNoteMaps() {
         List<Map<Course, Note>> courseNoteMapList = new ArrayList<>();
-        courseNoteMapList.add(generateCourseNoteMapForGroup("921", "IE2"));
-        courseNoteMapList.add(generateCourseNoteMapForGroup("926", "IE2"));
+        courseNoteMapList.add(generateCourseNoteMapForGroup("921"));
+        courseNoteMapList.add(generateCourseNoteMapForGroup("926"));
 
         return courseNoteMapList;
     }
