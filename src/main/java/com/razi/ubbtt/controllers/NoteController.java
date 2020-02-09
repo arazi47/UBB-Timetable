@@ -37,10 +37,7 @@ public class NoteController {
         }
 
         model.addAttribute("noteForm", Note.builder().build());
-        model.addAttribute("disciplines", courseRepository.getDisciplinesBySemester(weekRepository.getCurrentSemester()));
-        model.addAttribute("weeks", weekRepository.getWeeksFromCurrentUntilTheEndOfTheSemester(weekRepository.getCurrentWeek().getWeekNumber(), weekRepository.getCurrentSemester()));
-        model.addAttribute("groups", Arrays.asList("921", "921/1", "921/2", "922", "922/1", "922/2", "923", "923/1", "923/2", "924", "924/1", "924/2", "925", "925/1", "925/2", "926", "926/1", "926/2", "927", "927/1", "927/2", "IE2"));
-        model.addAttribute("courseTypes", Arrays.asList("Curs", "Seminar", "Laborator"));
+        addNoteAttributesToModel(model);
 
         return "/admin/add-note";
     }
@@ -78,12 +75,16 @@ public class NoteController {
 
         // TODO change all IDs to Long in the domain
         model.addAttribute("noteForm", noteRepository.findById(id).get());
+        addNoteAttributesToModel(model);
+
+        return "/admin/edit-note";
+    }
+
+    private void addNoteAttributesToModel(Model model) {
         model.addAttribute("disciplines", courseRepository.getDisciplinesBySemester(weekRepository.getCurrentSemester()));
         model.addAttribute("weeks", weekRepository.getWeeksFromCurrentUntilTheEndOfTheSemester(weekRepository.getCurrentWeek().getWeekNumber(), weekRepository.getCurrentSemester()));
         model.addAttribute("groups", Arrays.asList("921", "921/1", "921/2", "922", "922/1", "922/2", "923", "923/1", "923/2", "924", "924/1", "924/2", "925", "925/1", "925/2", "926", "926/1", "926/2", "927", "927/1", "927/2", "IE2"));
         model.addAttribute("courseTypes", Arrays.asList("Curs", "Seminar", "Laborator"));
-
-        return "/admin/edit-note";
     }
 
     @PostMapping("/admin/my-notes/{id}/edit")
