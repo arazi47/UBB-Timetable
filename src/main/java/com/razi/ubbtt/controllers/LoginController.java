@@ -20,14 +20,6 @@ import java.util.*;
 
 @Controller
 public class LoginController {
-
-    private SecurityService securityService;
-
-    @Autowired
-    public void setSecurityService(SecurityService securityService) {
-        this.securityService = securityService;
-    }
-
     @Autowired
     private UserService userService;
 
@@ -40,69 +32,17 @@ public class LoginController {
     @Autowired
     private NoteRepository noteRepository;
 
-    /*
-    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-    public ModelAndView login(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
-    }
-    */
-
     @GetMapping("/login")
     public String tryLogin(Model model, String error, String logout) {
-        System.out.println("Attempting login my boi");
-        //if (username != null && password != null)
-        //    System.out.println(username + "..." + password);
+        System.out.println("Attempting login");
 
-        if (error != null) {
+        if (error != null)
             model.addAttribute("error", "Invalid username and password combination");
-            return "/login";
-        }
-
-        if (logout != null) {
+        else if (logout != null)
             model.addAttribute("message", "Logged out successfully");
-            //return "/login";
-        }
 
         return "/login";
     }
-
-/*
-    @RequestMapping(value="/registration", method = RequestMethod.GET)
-    public ModelAndView registration(){
-        ModelAndView modelAndView = new ModelAndView();
-        User user = new User();
-        modelAndView.addObject("user", user);
-        modelAndView.setViewName("registration");
-        return modelAndView;
-    }
-     */
-/*
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
-        ModelAndView modelAndView = new ModelAndView();
-        User userExists = userService.findUserByUsername(user.getUsername());
-        if (userExists != null) {
-            //bindingResult
-             //       .rejectValue("username", "error.user",
-              //              "There is already a user registered with the username provided");
-            System.out.println("USER EXISTS != NULL");
-        }
-        if (bindingResult.hasErrors()) {
-            modelAndView.setViewName("registration");
-            System.out.println("BINDING RESULT HAS ERRORS");
-        } else {
-            userService.saveUser(user);
-            securityService.autoLogin(user.getUsername(), user.getPassword());
-            modelAndView.addObject("successMessage", "User has been registered successfully");
-            modelAndView.addObject("user", new User());
-            //modelAndView.setViewName("registration");
-            modelAndView.setViewName("/");
-        }
-        return modelAndView;
-    }
- */
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -113,17 +53,7 @@ public class LoginController {
 
     @PostMapping("/registration")
     public String registration(@ModelAttribute("user") User userForm, BindingResult bindingResult) {
-//        userValidator.validate(userForm, bindingResult);
-//
-//        if (bindingResult.hasErrors()) {
-//            return "registration";
-//        }
-
         userService.saveUser(userForm);
-
-        // Not working currently!
-        //securityService.autoLogin(userForm.getUsername(), userForm.getUsername());
-
         return "redirect:/admin/home";
     }
 
@@ -250,16 +180,4 @@ public class LoginController {
 
         return courseNoteMapList;
     }
-
-    /*
-    @RequestMapping(value="/admin/home", method = RequestMethod.GET)
-    public ModelAndView home(){
-        ModelAndView modelAndView = new ModelAndView();
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user = userService.findUserByUsername(auth.getName());
-        modelAndView.addObject("userName", "Welcome " + " (" + user.getUsername() + ")");
-        modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
-        modelAndView.setViewName("admin/home");
-        return modelAndView;
-    }*/
 }
