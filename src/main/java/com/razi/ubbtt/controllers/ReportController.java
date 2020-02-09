@@ -33,7 +33,6 @@ public class ReportController {
     public String report(@ModelAttribute("reportForm") Report report, Principal principal) {
         report.setUsername(principal.getName());
         reportRepository.save(report);
-        //MailSystem.sendMail("raie2405", report.getMessage());
         return "redirect:/report";
     }
 }
