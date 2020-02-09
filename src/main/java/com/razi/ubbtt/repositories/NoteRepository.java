@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Set;
 
-@Repository("noteRepository")
 public interface NoteRepository extends JpaRepository<Note, Long> {
     //List<Note> getNotesBySemesterAndWeekNumberAndGr(int semester, int weekNumber);
 
