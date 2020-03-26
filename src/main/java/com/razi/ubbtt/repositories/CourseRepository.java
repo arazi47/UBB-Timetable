@@ -16,8 +16,11 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     @Query(value = "SELECT C FROM Course C WHERE (C.groupOrYear=(:group) OR C.groupOrYear=(:subgroup1) OR C.groupOrYear=(:subgroup2) OR C.groupOrYear=(:year)) AND C.semester = (:semester)")
     List<Course> getCoursesForGroupForCurrentSemesterAndWeek(@Param("group") String group, @Param("subgroup1") String subgroup1, @Param("subgroup2") String subgroup2, @Param("year") String year, @Param("semester") int semester);
 
-    @Query(value = "SELECT C FROM Course C WHERE C.year=(:year) OR C.semester=(:semester)")
+    @Query(value = "SELECT C FROM Course C WHERE C.year=(:year) AND C.semester=(:semester)")
     List<Course> getCoursesByYearAndSemester(@Param("year") int year, @Param("semester") int semester);
+
+    @Query(value = "SELECT C FROM Course C WHERE C.year=(:year) AND C.semester=(:semester) AND C.day=(:day)")
+    List<Course> getCoursesByYearAndSemesterAndDay(@Param("year") int year, @Param("semester") int semester, @Param("day") String day);
 
     @Query(value = "SELECT C FROM Course C WHERE C.semester=(:semester)")
     List<Course> getCoursesBySemester(@Param("semester") int semester);

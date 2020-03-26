@@ -4,6 +4,7 @@ import com.razi.ubbtt.Utils.GroupUtils;
 import com.razi.ubbtt.domain.Course;
 import com.razi.ubbtt.domain.Note;
 import com.razi.ubbtt.domain.User;
+import com.razi.ubbtt.job_shop.JobShop;
 import com.razi.ubbtt.repositories.CourseRepository;
 import com.razi.ubbtt.repositories.NoteRepository;
 import com.razi.ubbtt.repositories.WeekRepository;
@@ -174,6 +175,9 @@ public class LoginController {
     }
 
     public List<Map<Course, Note>> generateAllCourseNoteMaps() {
+        JobShop jobShop = new JobShop(5, courseRepository); // 5 days in the week
+        jobShop.solve(2, 2);
+
         List<Map<Course, Note>> courseNoteMapList = new ArrayList<>();
         courseNoteMapList.add(generateCourseNoteMapForGroup("921"));
         courseNoteMapList.add(generateCourseNoteMapForGroup("926"));
