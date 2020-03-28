@@ -22,7 +22,7 @@ public class TimetableController {
         }
 
         // 5 days in a week
-        JobShop jobShop = new JobShop(5, courseRepository);
+        JobShop jobShop = new JobShop(courseRepository);
         jobShop.solve(2, 2);
         model.addAttribute("timetable", jobShop.getFinishedTimetable());
         return "generate_timetable";
