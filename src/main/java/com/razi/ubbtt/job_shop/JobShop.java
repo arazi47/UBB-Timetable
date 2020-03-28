@@ -2,7 +2,6 @@ package com.razi.ubbtt.job_shop;
 
 import com.razi.ubbtt.domain.Course;
 import com.razi.ubbtt.repositories.CourseRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +21,10 @@ public class JobShop {
 
     public int getMachines() {
         return this.machines;
+    }
+
+    public List<Course> getFinishedTimetable() {
+        return this.myCourses;
     }
 
     private int getDayOfWeekFromString(String dayOfWeek) {

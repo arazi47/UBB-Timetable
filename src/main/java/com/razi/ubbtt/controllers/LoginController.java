@@ -175,9 +175,6 @@ public class LoginController {
     }
 
     public List<Map<Course, Note>> generateAllCourseNoteMaps() {
-        JobShop jobShop = new JobShop(5, courseRepository); // 5 days in the week
-        jobShop.solve(2, 2);
-
         List<Map<Course, Note>> courseNoteMapList = new ArrayList<>();
         courseNoteMapList.add(generateCourseNoteMapForGroup("921"));
         courseNoteMapList.add(generateCourseNoteMapForGroup("926"));
