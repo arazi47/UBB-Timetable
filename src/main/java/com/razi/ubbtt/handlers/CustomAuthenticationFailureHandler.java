@@ -4,9 +4,11 @@ import com.razi.ubbtt.domain.Role;
 import com.razi.ubbtt.domain.User;
 import com.razi.ubbtt.repositories.RoleRepository;
 import com.razi.ubbtt.repositories.UserRepository;
+import com.razi.ubbtt.services.UserDetailsServiceImpl;
 import com.razi.ubbtt.services.UserService;
 import com.sun.mail.imap.IMAPFolder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -35,6 +37,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
     @Autowired
     UserService userService;
 
+    @Qualifier("userDetailsServiceImpl")
     @Autowired
     UserDetailsService userDetailsService;
 
@@ -49,7 +52,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
             HttpServletRequest request,
             HttpServletResponse response,
             AuthenticationException exception)
-            throws IOException, ServletException {
+            throws IOException {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");

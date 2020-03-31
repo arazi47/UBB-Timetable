@@ -5,25 +5,30 @@ import com.razi.ubbtt.Utils.GroupUtils;
 import com.razi.ubbtt.domain.Course;
 import com.razi.ubbtt.domain.Note;
 import com.razi.ubbtt.domain.User;
-import com.razi.ubbtt.job_shop.JobShop;
 import com.razi.ubbtt.repositories.CourseRepository;
 import com.razi.ubbtt.repositories.NoteRepository;
 import com.razi.ubbtt.repositories.WeekRepository;
-import com.razi.ubbtt.services.SecurityService;
 import com.razi.ubbtt.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.security.Principal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class LoginController {
-    @Autowired
-    private UserService userService;
+    //@Autowired
+    //private UserService userService;
 
     @Autowired
     private CourseRepository courseRepository;
@@ -55,7 +60,7 @@ public class LoginController {
 
     @PostMapping("/registration")
     public String registration(@ModelAttribute("user") User userForm, BindingResult bindingResult) {
-        userService.saveUser(userForm);
+        //userService.saveUser(userForm);
         return "redirect:/admin/home";
     }
 

@@ -19,11 +19,17 @@ public class JobShop {
         return this.myCourses;
     }
 
-    private int classCount(String courseName, String type) {
+    /**
+     *
+     * @param disciplineName the discipline's name
+     * @param classType the class' type (lecture/seminary/laboratory)
+     * @return the number of classes of a specific type are already in the generated timetable
+     */
+    private int classCount(String disciplineName, String classType) {
         int cnt = 0;
-        for (Course mondayClass : myCourses) {
-            if (mondayClass.getDiscipline().equals(courseName) &&
-                    mondayClass.getType().equals(type))
+        for (Course currentClass : myCourses) {
+            if (currentClass.getDiscipline().equals(disciplineName) &&
+                    currentClass.getType().equals(classType))
                 ++cnt;
         }
 
@@ -33,7 +39,6 @@ public class JobShop {
     /**
      * Checks if the timetable contains all the needed classes for year 2, semester 2
      * @return true, if the timetable contains all the needed classes for year 2, semester 2
-     *
      */
     private boolean checkIfSolved() {
         if (classCount("Medii de proiectare si programare", "Laborator") != 1)

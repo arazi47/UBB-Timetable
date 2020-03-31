@@ -1,10 +1,15 @@
 package com.razi.ubbtt.configuration;
 
 import com.razi.ubbtt.handlers.CustomAuthenticationFailureHandler;
+import com.razi.ubbtt.services.UserDetailsServiceImpl;
+import com.razi.ubbtt.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,6 +23,7 @@ import org.springframework.security.web.authentication.rememberme.JdbcTokenRepos
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.persistence.EntityManager;
 import javax.sql.DataSource;
 
 @Configuration
@@ -36,8 +42,39 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
-    @Autowired
-    UserDetailsService userDetailsService;
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/ubbtt?useSSL=true");
+        dataSource.setUsername("root");
+        dataSource.setPassword("root1234");
+        return dataSource;
+    }
+
+    @Bean
+    public EntityManager entityManager() {
+        return entityManagerFactory().getObject().createEntityManager();
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+        emf.setDataSource(dataSource);
+        emf.setPackagesToScan("com.razi.ubbtt.domain");
+        emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        //emf.setJpaPropertyMap(irdbConfig.getAdditionalHibernateProperties());
+        return emf;
+    }
+
+    /*
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
+        em.setDataSource(dataSource());
+        em.setPackagesToScan("com.razi.ubbtt.domain");
+        return em;
+    }*/
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
@@ -119,4 +156,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         jdbcTokenRepository.setDataSource(dataSource);
         return jdbcTokenRepository;
     }
+
+    /*
+    @Bean
+    public UserService userService() {
+        return new UserService();
+    }
+
+    @Bean
+    public UserDetailsServiceImpl userDetailsServiceImpl() {
+        return new UserDetailsServiceImpl();
+    }
+     */
 }
