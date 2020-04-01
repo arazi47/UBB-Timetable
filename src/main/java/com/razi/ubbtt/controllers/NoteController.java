@@ -90,6 +90,7 @@ public class NoteController {
     @PostMapping("/admin/my-notes/{id}/edit")
     public String editNote(@ModelAttribute("noteForm") Note note, @PathVariable Long id, Principal principal) {
         note.setAuthor(principal.getName());
+        note.setSemester(weekRepository.getCurrentSemester());
         noteRepository.save(note);
 
         return "redirect:/admin/my-notes";
