@@ -156,16 +156,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         jdbcTokenRepository.setDataSource(dataSource);
         return jdbcTokenRepository;
     }
-
-    /*
-    @Bean
-    public UserService userService() {
-        return new UserService();
-    }
-
-    @Bean
-    public UserDetailsServiceImpl userDetailsServiceImpl() {
-        return new UserDetailsServiceImpl();
-    }
-     */
 }

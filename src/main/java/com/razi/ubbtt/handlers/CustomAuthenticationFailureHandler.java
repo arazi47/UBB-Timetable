@@ -1,12 +1,8 @@
 package com.razi.ubbtt.handlers;
 
-import com.razi.ubbtt.domain.Role;
 import com.razi.ubbtt.domain.User;
 import com.razi.ubbtt.repositories.RoleRepository;
-import com.razi.ubbtt.repositories.UserRepository;
-import com.razi.ubbtt.services.UserDetailsServiceImpl;
 import com.razi.ubbtt.services.UserService;
-import com.sun.mail.imap.IMAPFolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,13 +16,11 @@ import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 
-import javax.mail.*;
-import javax.servlet.ServletException;
+import javax.mail.Session;
+import javax.mail.Store;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Properties;
 
 /**
@@ -59,7 +53,7 @@ public class CustomAuthenticationFailureHandler implements AuthenticationFailure
 
         RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 
-        Store store = null;
+        Store store;
         try
         {
             Properties props = System.getProperties();

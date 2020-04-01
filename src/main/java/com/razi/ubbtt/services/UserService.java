@@ -27,15 +27,6 @@ public class UserService {
 
     private List<String> adminUsernames = new ArrayList<>(Arrays.asList("test1", "test2"));
 
-   /* @Autowired
-    public UserService(UserRepository userRepository,
-                       RoleRepository roleRepository,
-                       BCryptPasswordEncoder bCryptPasswordEncoder) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-    }*/
-
     public User findUserByUsername(String username) {
         return userRepository.findByUsername(username);
     }

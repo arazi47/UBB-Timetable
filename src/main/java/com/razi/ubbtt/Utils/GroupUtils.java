@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupUtils {
-    public static String getYearFromGroup(String group) {
+    private static String getYearFromGroup(String group) {
         if (group.length() != 3) {
             // Not ok
             return "";
@@ -26,7 +26,7 @@ public class GroupUtils {
         return result.toString();
     }
 
-    public static List<String> getGroupAndSubgroupsAsList(String group) {
+    private static List<String> getGroupAndSubgroupsAsList(String group) {
         return new ArrayList<>(List.of(group, group + "/1", group + "/2"));
     }
 

@@ -1,6 +1,5 @@
 package com.razi.ubbtt.controllers;
 
-import com.razi.ubbtt.Utils.MailSystem;
 import com.razi.ubbtt.domain.Report;
 import com.razi.ubbtt.repositories.ReportRepository;
 import org.springframework.beans.factory.annotation.Autowired;
