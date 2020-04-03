@@ -1,6 +1,6 @@
 package com.razi.ubbtt.controllers;
 
-import com.razi.ubbtt.Utils.ClassesUtils;
+import com.razi.ubbtt.Utils.ClassUtils;
 import com.razi.ubbtt.Utils.GroupUtils;
 import com.razi.ubbtt.domain.Course;
 import com.razi.ubbtt.domain.Note;
@@ -71,7 +71,7 @@ public class LoginController {
         List<String> groupAndSubgroupsAndYear = GroupUtils.getGroupAndSubgroupsAndYearAsList(group);
         // LinkedHashMap retains the order of insertion
         Map<Course, Note> courseNoteMap = new LinkedHashMap<>();
-        for (Course c: ClassesUtils.sortCourses(courseRepository.getCoursesForGroupForCurrentSemesterAndWeek(group, groupAndSubgroupsAndYear.get(1), groupAndSubgroupsAndYear.get(2), groupAndSubgroupsAndYear.get(3), weekRepository.getCurrentSemester()))) {
+        for (Course c: ClassUtils.sortCourses(courseRepository.getCoursesForGroupForCurrentSemesterAndWeek(group, groupAndSubgroupsAndYear.get(1), groupAndSubgroupsAndYear.get(2), groupAndSubgroupsAndYear.get(3), weekRepository.getCurrentSemester()))) {
             boolean courseAdded = false;
             for (Note n: noteRepository.getNotesForCurrentSemesterAndWeekAndGroupOrYear(weekRepository.getCurrentSemester(), weekRepository.getCurrentWeek().getWeekNumber(), new ArrayList<>(GroupUtils.getGroupAndSubgroupsAndYearAsList("926")))) {
                 /*

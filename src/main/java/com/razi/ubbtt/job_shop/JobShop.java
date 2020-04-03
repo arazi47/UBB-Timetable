@@ -1,6 +1,6 @@
 package com.razi.ubbtt.job_shop;
 
-import com.razi.ubbtt.Utils.ClassesUtils;
+import com.razi.ubbtt.Utils.ClassUtils;
 import com.razi.ubbtt.domain.Course;
 import com.razi.ubbtt.repositories.CourseRepository;
 
@@ -101,7 +101,7 @@ public class JobShop {
 
     public void solve(int year, int semester) {
         List<Course> allCourses = courseRepository.getCoursesByYearAndSemester(year, semester);
-        allCourses = ClassesUtils.sortCourses(allCourses);
+        allCourses = ClassUtils.sortCourses(allCourses);
         // The finished timetable
         this.myCourses = new ArrayList<>();
         //int iteration = 1;
@@ -119,7 +119,7 @@ public class JobShop {
 
     private void printFinishedTimetable() {
         System.out.println(":::::::::::::::::::::::::::::: START FINISHED TIMETABLE ::::::::::::::::::::::::::::::");
-        this.myCourses = ClassesUtils.sortCourses(this.myCourses);
+        this.myCourses = ClassUtils.sortCourses(this.myCourses);
         for (int j = 0; j < this.myCourses.size(); ++j) {
             System.out.println(this.myCourses.get(j));
 

@@ -4,7 +4,7 @@ import com.razi.ubbtt.domain.Course;
 
 import java.util.List;
 
-public class ClassesUtils {
+public class ClassUtils {
     private static int getDayOfWeekFromString(String dayOfWeek) {
         switch (dayOfWeek.toLowerCase()) {
             case "luni":
