@@ -2,10 +2,7 @@ package com.razi.ubbtt.OnAppEvent;
 
 import com.razi.ubbtt.domain.Course;
 import com.razi.ubbtt.domain.Week;
-import com.razi.ubbtt.domain.WeekCourseNotes;
 import com.razi.ubbtt.repositories.CourseRepository;
-import com.razi.ubbtt.repositories.NoteRepository;
-import com.razi.ubbtt.repositories.WeekCourseNotesRepository;
 import com.razi.ubbtt.repositories.WeekRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -25,12 +22,6 @@ public class OnAppEvent implements ApplicationListener<ContextRefreshedEvent> {
 
     @Autowired
     private WeekRepository weekRepository;
-
-    @Autowired
-    private NoteRepository noteRepository;
-
-    @Autowired
-    private WeekCourseNotesRepository weekCourseNotesRepository;
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
@@ -89,46 +80,6 @@ public class OnAppEvent implements ApplicationListener<ContextRefreshedEvent> {
             }
         } catch (Exception e) {
             System.out.println(e.toString());
-        }
-    }
-
-    private void buildWeekCourseNotes() {
-        // Sem 1
-        /*
-        for (Week week: weekRepository.getAllWeeksBySemesterOrderedByWeekNumber(1)) {
-            for (Course course: courseRepository.getCoursesBySemester(1)) {
-                WeekCourseNotes wcn = new WeekCourseNotes();
-                if (course.getFrequency().equals("sapt. 1") && week.getWeekNumber() % 2 == 1) {
-                    wcn.setWeekId(week.getId());
-                    wcn.setCourseId(course.getId());
-                    weekCourseNotesRepository.save(wcn);
-                } else if (course.getFrequency().equals("sapt. 2") && week.getWeekNumber() % 2 == 0) {
-                    wcn.setWeekId(week.getId());
-                    wcn.setCourseId(week.getId());
-                    weekCourseNotesRepository.save(wcn);
-                }
-            }
-        }
-        */
-
-        // Sem 2
-        for (Week week: weekRepository.getAllWeeksBySemesterOrderedByWeekNumber(2)) {
-            for (Course course: courseRepository.getCoursesBySemester(2)) {
-                WeekCourseNotes wcn = new WeekCourseNotes();
-                if (course.getFrequency().equals("sapt. 1") && week.getWeekNumber() % 2 == 1) {
-                    wcn.setWeekId(week.getId());
-                    wcn.setCourseId(course.getId());
-                    weekCourseNotesRepository.save(wcn);
-                } else if (course.getFrequency().equals("sapt. 2") && week.getWeekNumber() % 2 == 0) {
-                    wcn.setWeekId(week.getId());
-                    wcn.setCourseId(course.getId());
-                    weekCourseNotesRepository.save(wcn);
-                } else if (course.getFrequency().equals("")) {
-                    wcn.setWeekId(week.getId());
-                    wcn.setCourseId(course.getId());
-                    weekCourseNotesRepository.save(wcn);
-                }
-            }
         }
     }
 }
