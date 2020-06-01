@@ -32,14 +32,12 @@ public class SecurityServiceImpl implements SecurityService {
     @Override
     public void autoLogin(String username, String password) {
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-        // for autologin we must get the unencrypted password...
+        // We must get the unencrypted password for this
         UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(userDetails, password, userDetails.getAuthorities());
-        System.out.println("TRYING AUTOLOGIN");
         Authentication auth = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
         if (auth.isAuthenticated()) {
             SecurityContextHolder.getContext().setAuthentication(auth);
             logger.debug(String.format("Auto login %s successfully!", username));
-            System.out.println("AUTO LOGIN SUCCESS");
         }
     }
 

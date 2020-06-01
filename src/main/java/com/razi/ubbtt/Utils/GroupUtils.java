@@ -5,10 +5,7 @@ import java.util.List;
 
 public class GroupUtils {
     private static String getYearFromGroup(String group) {
-        if (group.length() != 3) {
-            // Not ok
-            return "";
-        }
+        assert group.length() == 3;
 
         StringBuilder result = new StringBuilder();
         if (group.startsWith("2")){

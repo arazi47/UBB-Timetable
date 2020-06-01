@@ -126,8 +126,6 @@ public class FJSSPTest {
         operationsDurationMap.put(new Tuple3<>(6, 4, 4), 6);
         operationsDurationMap.put(new Tuple3<>(6, 4, 5), 8);
 
-        operationsDurationMap.put(new Tuple3<>(3, 4, 4), 4);
-
         operationsDurationMap.put(new Tuple3<>(7, 4, 1), 2);
         operationsDurationMap.put(new Tuple3<>(7, 4, 2), 8);
         operationsDurationMap.put(new Tuple3<>(7, 4, 3), 4);

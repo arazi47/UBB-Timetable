@@ -63,18 +63,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         emf.setDataSource(dataSource);
         emf.setPackagesToScan("com.razi.ubbtt.domain");
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        //emf.setJpaPropertyMap(irdbConfig.getAdditionalHibernateProperties());
         return emf;
     }
-
-    /*
-    @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
-        em.setDataSource(dataSource());
-        em.setPackagesToScan("com.razi.ubbtt.domain");
-        return em;
-    }*/
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
@@ -101,7 +91,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration").permitAll()
                 .antMatchers("/admin/**")
                 .permitAll()
-                //.hasAuthority("ADMIN")
                 .anyRequest()
 
                 .authenticated().and().csrf().disable().formLogin()
@@ -109,11 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/admin/home")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                // Not working
-                .failureHandler(/*(req,res,exp)->{
-                    System.out.println("FUTALE");// Failure handler invoked after authentication failure
-                    res.sendRedirect("/FAILUREH ANDLER BOI"); // Redirect user to login page with error message.
-                }*/ customAuthenticationFailureHandler())
+                .failureHandler(customAuthenticationFailureHandler())
 
                 .permitAll()
 

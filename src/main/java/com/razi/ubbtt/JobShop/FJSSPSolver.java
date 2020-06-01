@@ -64,7 +64,6 @@ public class FJSSPSolver extends JobShopSolver {
     private Tuple3<Integer, Integer, Integer> getBestJobOperationForMachine(int machineId) {
         Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> bestEntry = null;
         for (Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> entry : operationsDurationMapAll.entrySet()) {
-            // first = machineId id
             if (entry.getKey().first() == machineId) {
                 if (bestEntry == null)
                     bestEntry = entry;

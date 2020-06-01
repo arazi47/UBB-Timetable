@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Set;
 
 public interface NoteRepository extends JpaRepository<Note, Long> {
-    //List<Note> getNotesBySemesterAndWeekNumberAndGr(int semester, int weekNumber);
-
     @Query(value = "SELECT N FROM Note N WHERE N.semester = (:semester) AND N.weekNumber = (:weekNumber) AND N.groupOrYear in :groupOrYear")
     Set<Note> getNotesForCurrentSemesterAndWeekAndGroupOrYear(@Param("semester") int semester, @Param("weekNumber") int weekNumber, @Param("groupOrYear") List<String> groupOrYear);
 

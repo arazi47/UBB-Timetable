@@ -26,7 +26,6 @@ public class OnAppEvent implements ApplicationListener<ContextRefreshedEvent> {
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
         // Run this once
-        // Already in DB!!!
         // year 2, sem 2
         /*
         for (Course c: this.loadSubjects("C:\\Users\\necso\\Desktop\\ubbtt\\src\\main\\java\\com\\razi\\ubbtt\\OnAppEvent\\y2s2.txt")) {
