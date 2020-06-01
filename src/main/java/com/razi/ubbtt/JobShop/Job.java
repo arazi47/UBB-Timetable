@@ -1,11 +1,11 @@
-package com.razi.ubbtt.job_shop;
+package com.razi.ubbtt.JobShop;
 
 import com.razi.ubbtt.Utils.Tuple3;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class JSSP_Job {
+public class Job {
     private int index;
     private int operations;
 
@@ -13,7 +13,7 @@ public class JSSP_Job {
     // value = duration
     Map<Tuple3<Integer, Integer, Integer>, Integer> operationsDurationMap = new HashMap<>();
 
-    public JSSP_Job(int index, int operations, Map<Tuple3<Integer, Integer, Integer>, Integer> operationsDurationMap) {
+    public Job(int index, int operations, Map<Tuple3<Integer, Integer, Integer>, Integer> operationsDurationMap) {
         this.index = index;
         this.operations = operations;
         this.operationsDurationMap = operationsDurationMap;

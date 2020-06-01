@@ -1,8 +1,8 @@
 package com.razi.ubbtt.JobShopTests;
 
 import com.razi.ubbtt.Utils.Tuple3;
-import com.razi.ubbtt.job_shop.FJSSP_Solver;
-import com.razi.ubbtt.job_shop.JSSP_Job;
+import com.razi.ubbtt.JobShop.FJSSPSolver;
+import com.razi.ubbtt.JobShop.Job;
 import org.junit.Test;
 
 import java.util.*;
@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
 public class FJSSPTest {
     private int jobCount = 8;
     private int machineCount = 10;
-    private Set<JSSP_Job> jobs = new HashSet<>();
     private List<Integer> operationCountForJob = Arrays.asList(4, 3, 4, 5, 4, 5, 4, 5);
 
     private Map<Tuple3<Integer, Integer, Integer>, Integer> getOperationsDurationMapForJob1() {
@@ -312,20 +311,21 @@ public class FJSSPTest {
         }
     }
 
-    private void generateJobs() {
+    private void generateJobs(Set<Job> jobs) {
         for (int j = 0; j < this.jobCount; ++j) {
-            JSSP_Job job = new JSSP_Job(j + 1, operationCountForJob.get(j), getOperationsDurationMapForJob(j + 1));
+            Job job = new Job(j + 1, operationCountForJob.get(j), getOperationsDurationMapForJob(j + 1));
             jobs.add(job);
         }
     }
 
     @Test
     public void ACOExampleTest() {
-        generateJobs();
+        Set<Job> jobs = new HashSet<>();
+        generateJobs(jobs);
 
         assertEquals(jobs.size(), jobCount);
 
-        FJSSP_Solver solver = new FJSSP_Solver(jobCount, machineCount, jobs);
+        FJSSPSolver solver = new FJSSPSolver(jobCount, machineCount, jobs);
         solver.solve();
 
         System.out.println("Makespan = " + solver.getMakespan());
