@@ -2,10 +2,7 @@ package com.razi.ubbtt.JobShop;
 
 import com.razi.ubbtt.Utils.Tuple3;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public abstract class JobShopSolver {
     int jobCount;
@@ -16,17 +13,12 @@ public abstract class JobShopSolver {
     Map<Tuple3<Integer, Integer, Integer>, Integer> operationsDurationMapAll = new HashMap<>();
     Map<Integer, List<Tuple3<Integer, Integer, Integer>>> sequences = new HashMap<>();
 
+    // Contains the makespans for each machine
+    List<Integer> makespans = new ArrayList<>();
+
     public JobShopSolver(int jobCount, int machineCount, Set<Job> jobs) {
         this.jobCount = jobCount;
         this.machineCount = machineCount;
-        this.jobs = jobs;
-    }
-
-    public Set<Job> getJobs() {
-        return jobs;
-    }
-
-    public void setJobs(Set<Job> jobs) {
         this.jobs = jobs;
     }
 

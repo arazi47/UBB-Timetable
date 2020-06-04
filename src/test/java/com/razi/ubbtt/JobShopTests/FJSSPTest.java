@@ -326,8 +326,6 @@ public class FJSSPTest {
         FJSSPSolver solver = new FJSSPSolver(jobCount, machineCount, jobs);
         solver.solve();
 
-        System.out.println("Makespan = " + solver.getMakespan());
-
         solver.printSequences();
 
         // TODO assert the sequence

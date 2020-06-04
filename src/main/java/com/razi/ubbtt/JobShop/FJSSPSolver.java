@@ -2,10 +2,7 @@ package com.razi.ubbtt.JobShop;
 
 import com.razi.ubbtt.Utils.Tuple3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class FJSSPSolver extends JobShopSolver {
     public FJSSPSolver(int jobCount, int machineCount, Set<Job> jobs) {
@@ -15,26 +12,42 @@ public class FJSSPSolver extends JobShopSolver {
     /**
      * Generate the operation sequences for the given jobs and machines
      */
+
     @Override
     public void solve() {
         initializeSequences();
         combineOperationMaps();
+        initializeMakespans();
 
-        int machine = 1;
-        while (!operationsDurationMapAll.isEmpty()) {
-            Tuple3<Integer, Integer, Integer> bestOperation = getBestJobOperationForMachine(machine);
-            // Maybe there are no more operations supported by this machine
-            if (bestOperation != null) {
-                // Remove all entries for job id, operation id for other machines, we do not need them anymore
-                removeEntriesForJobAndOperation(bestOperation.first(), bestOperation.second());
+        for (Job job: jobs) {
+            for (int o = 1; o <= job.getOperations(); ++o) {
+                Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> bestEntry = getBestMachineForJobOperation(job.getIndex(), o);
+                if (bestEntry != null) {
+                    removeEntriesForJobAndOperation(job.getIndex(), o);
 
-                List<Tuple3<Integer, Integer, Integer>> sequenceList = sequences.get(machine);
-                sequenceList.add(bestOperation);
+                    List<Tuple3<Integer, Integer, Integer>> sequenceList = sequences.get(bestEntry.getKey().first());
+                    sequenceList.add(new Tuple3<>(bestEntry.getKey().second(), bestEntry.getKey().third(), bestEntry.getValue()));
+
+                    // If it's the first operation, no previous operation was executed
+                    if (bestEntry.getKey().third() == 1 || makespans.get(getMachineThatCompletedJobOperationBefore(bestEntry.getKey().second(), bestEntry.getKey().third()) - 1) < makespans.get(bestEntry.getKey().first() - 1))
+                        makespans.set(bestEntry.getKey().first() - 1, makespans.get(bestEntry.getKey().first() - 1) + bestEntry.getValue());
+                    else
+                        makespans.set(bestEntry.getKey().first() - 1, makespans.get(getMachineThatCompletedJobOperationBefore(bestEntry.getKey().second(), bestEntry.getKey().third()) - 1) + bestEntry.getValue());
+                }
             }
-            ++machine;
-            if (machine == machineCount)
-                machine = 1;
         }
+    }
+
+    int getMachineThatCompletedJobOperationBefore(int jobId, int operationId) {
+        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, Integer>>> entry: sequences.entrySet()) {
+            for (Tuple3<Integer, Integer, Integer> tuple : entry.getValue()) {
+                if (tuple.first() == jobId && tuple.second() == operationId - 1)
+                    return entry.getKey();
+            }
+        }
+
+        System.out.println("WTF");
+        return 0;
     }
 
     /**
@@ -56,15 +69,23 @@ public class FJSSPSolver extends JobShopSolver {
     }
 
     /**
-     *
-     * @param machineId ranging from 1 to machineCount
-     * @return a tuple containing the jobId, operationId and the
-     * duration of executing that job's operationId on the specified machineId
+     * Initialize each machine's makespan to 0
      */
-    private Tuple3<Integer, Integer, Integer> getBestJobOperationForMachine(int machineId) {
+    public void initializeMakespans() {
+        for (int i = 0; i < machineCount; ++i)
+            makespans.add(0);
+    }
+
+    /**
+     *
+     * @param jobId ranging from 1 to jobCount
+     * @param operationId ranging from 1 to each job's number of operations
+     * @return the entry from operationDurationMapAll which takes the least time to complete
+     */
+    private Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> getBestMachineForJobOperation(int jobId, int operationId) {
         Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> bestEntry = null;
         for (Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> entry : operationsDurationMapAll.entrySet()) {
-            if (entry.getKey().first() == machineId) {
+            if (entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
                 if (bestEntry == null)
                     bestEntry = entry;
                 else if (entry.getValue() < bestEntry.getValue())
@@ -72,11 +93,7 @@ public class FJSSPSolver extends JobShopSolver {
             }
         }
 
-        if (bestEntry == null)
-            return null;
-
-        // <jobId, operationId, duration>
-        return new Tuple3<>(bestEntry.getKey().second(), bestEntry.getKey().third(), bestEntry.getValue());
+        return bestEntry;
     }
 
     /**
@@ -95,18 +112,7 @@ public class FJSSPSolver extends JobShopSolver {
      */
     @Override
     public int getMakespan() {
-        int totalMakespan = -1;
-        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, Integer>>> entry : sequences.entrySet()) {
-            int currMakespan = 0;
-            for (Tuple3<Integer, Integer, Integer> tuple : entry.getValue()) {
-                currMakespan += tuple.third();
-            }
-
-            if (currMakespan > totalMakespan)
-                totalMakespan = currMakespan;
-        }
-
-        return totalMakespan;
+        return Collections.max(makespans);
     }
 
     /**
@@ -115,13 +121,16 @@ public class FJSSPSolver extends JobShopSolver {
     public void printSequences() {
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, Integer>>> entry : sequences.entrySet()) {
             System.out.println("=============== MACHINE " + entry.getKey() + " ===============");
-            int makespan = 0;
             for (Tuple3<Integer, Integer, Integer> tuple : entry.getValue()) {
                 System.out.println("Job = " + tuple.first() + "; Operation = " + tuple.second() + "; Duration = " + tuple.third());
-                makespan += tuple.third();
             }
-            System.out.println("Makespan for this machine: " + makespan);
+
+            System.out.println("Makespan for this machine: " + makespans.get(entry.getKey() - 1));
             System.out.println("=======================================");
         }
+
+        System.out.println();
+        System.out.println();
+        System.out.println();
     }
 }

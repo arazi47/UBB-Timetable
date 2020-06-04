@@ -29,7 +29,7 @@ public class TimetableController {
         MockupTimetable mockupTimetable = new MockupTimetable();
         Map<Integer, List<Tuple3<Integer, Integer, Integer>>> sequences = mockupTimetable.initializeMockupTimetable();
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, Integer>>> entry : sequences.entrySet()) {
-            System.out.println("=============== MACHINE " + entry.getKey() + " ===============");
+            //System.out.println("=============== MACHINE " + entry.getKey() + " ===============");
             for (Tuple3<Integer, Integer, Integer> tuple : entry.getValue()) {
                 //System.out.println("Job = " + tuple.first() + "; Operation = " + tuple.second() + "; Duration = " + tuple.third());
                 courseList.add(createCourseFromMapEntry(entry.getKey(), tuple));

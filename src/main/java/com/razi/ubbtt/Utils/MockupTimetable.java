@@ -8,7 +8,6 @@ import java.util.*;
 public class MockupTimetable {
     private int jobCount = 6;
     private int machineCount = 5;
-    private List<Integer> operationCountForJob = Arrays.asList(4, 3, 4, 5, 4, 5, 4, 5);
 
     private Map<Tuple3<Integer, Integer, Integer>, Integer> getOperationsDurationMapForJob1() {
         // key = pair <machineId, jobId, operationId>
@@ -118,7 +117,7 @@ public class MockupTimetable {
         //operationsDurationMap.put(new Tuple3<>(4, 6, 4), 6);
 
         //operationsDurationMap.put(new Tuple3<>(5, 6, 1), 10);
-        operationsDurationMap.put(new Tuple3<>(5, 6, 3), 10);
+        operationsDurationMap.put(new Tuple3<>(5, 6, 1), 10);
         //operationsDurationMap.put(new Tuple3<>(5, 6, 5), 8);
 
         return operationsDurationMap;
@@ -146,7 +145,7 @@ public class MockupTimetable {
 
     private void generateJobs(Set<Job> jobs) {
         for (int j = 0; j < this.jobCount; ++j) {
-            Job job = new Job(j + 1, operationCountForJob.get(j), getOperationsDurationMapForJob(j + 1));
+            Job job = new Job(j + 1, 3, getOperationsDurationMapForJob(j + 1));
             jobs.add(job);
         }
     }
