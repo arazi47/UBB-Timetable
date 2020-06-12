@@ -51,7 +51,7 @@ public class NoteController {
         note.setAuthor(principal.getName());
         noteRepository.save(note);
 
-        return "redirect:/admin/home";
+        return "redirect:/admin/my-notes";
     }
 
     @GetMapping("/admin/my-notes")
@@ -77,6 +77,18 @@ public class NoteController {
         addNoteAttributesToModel(model);
 
         return "/admin/edit-note";
+    }
+
+    @GetMapping("/admin/my-notes/{id}/delete")
+    public String deleteNote(Model model, @PathVariable Long id, Principal principal) {
+        // if we're authenticated
+        if (principal != null) {
+            model.addAttribute("username", principal.getName());
+        }
+
+        noteRepository.deleteById(id);
+
+        return "redirect:/admin/my-notes";
     }
 
     private void addNoteAttributesToModel(Model model) {

@@ -51,6 +51,16 @@ public class ClassUtils {
                 return "English (2)";
             case "didactica informaticii":
                 return "Didactics of Informatics";
+
+                // Year 3
+            case "verificarea si validarea sistemelor soft":
+                return "Software verification and validation";
+            case "elaborarea lucrarii de licenta":
+                return "Preparing the bachelor thesis";
+            case "calcul numeric":
+                return "Numerical calculus";
+            case "fundamentele limbajelor de programare":
+                return "Fundamentals of programming languages";
             default:
                 //return "Error in disciplineFromRoToEn";
                 return discipline;
