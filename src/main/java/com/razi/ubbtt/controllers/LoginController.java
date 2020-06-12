@@ -48,11 +48,14 @@ public class LoginController {
         }
 
         HomepageTimetableUtils homepageTimetableUtils = new HomepageTimetableUtils(courseRepository, noteRepository, weekRepository);
-        // LinkedHashMap retains the order of insertion
         List<Map<Course, Note>> courseNoteMapList = homepageTimetableUtils.generateAllCourseNoteMaps();
 
-        model.addAttribute("courseNoteMap921", courseNoteMapList.get(0));
-        model.addAttribute("courseNoteMap926", courseNoteMapList.get(1));
+        model.addAttribute("courseNoteMap912", courseNoteMapList.get(0));
+        model.addAttribute("courseNoteMap914", courseNoteMapList.get(1));
+        model.addAttribute("courseNoteMap921", courseNoteMapList.get(2));
+        model.addAttribute("courseNoteMap926", courseNoteMapList.get(3));
+        model.addAttribute("courseNoteMap935", courseNoteMapList.get(4));
+        model.addAttribute("courseNoteMap937", courseNoteMapList.get(5));
 
         return "admin/home";
     }

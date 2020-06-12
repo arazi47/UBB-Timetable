@@ -1,5 +1,7 @@
 package com.razi.ubbtt.controllers;
 
+import com.razi.ubbtt.JobShop.utils.AdditionalInfo;
+import com.razi.ubbtt.Utils.ClassUtils;
 import com.razi.ubbtt.Utils.MockupTimetable;
 import com.razi.ubbtt.Utils.Tuple3;
 import com.razi.ubbtt.domain.Course;
@@ -27,18 +29,77 @@ public class TimetableController {
         List<Course> courseList = new ArrayList<>();
 
         MockupTimetable mockupTimetable = new MockupTimetable();
-        Map<Integer, List<Tuple3<Integer, Integer, Integer>>> sequences = mockupTimetable.initializeMockupTimetable();
-        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, Integer>>> entry : sequences.entrySet()) {
+        Map<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> sequences = mockupTimetable.initializeMockupTimetable();
+        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
             //System.out.println("=============== MACHINE " + entry.getKey() + " ===============");
-            for (Tuple3<Integer, Integer, Integer> tuple : entry.getValue()) {
+            for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
                 //System.out.println("Job = " + tuple.first() + "; Operation = " + tuple.second() + "; Duration = " + tuple.third());
                 courseList.add(createCourseFromMapEntry(entry.getKey(), tuple));
             }
         }
 
+        this.sortCourses(courseList);
+
+        for (Course course: courseList) {
+            course.setDay(ClassUtils.dayFromRoToEn(course.getDay()));
+            course.setType(ClassUtils.typeFromRoToEn(course.getType()));
+            course.setDiscipline(ClassUtils.disciplineFromRoToEn(course.getDiscipline()));
+            course.setFrequency(ClassUtils.frequencyFromRoToEn(course.getFrequency()));
+        }
+
         model.addAttribute("timetable", courseList);
 
         return "generate_timetable";
+    }
+
+    private int getDayOfWeekFromString(String dayOfWeek) {
+        switch (dayOfWeek.toLowerCase()) {
+            case "luni":
+                return 1;
+            case "marti":
+                return 2;
+            case "miercuri":
+                return 3;
+            case "joi":
+                return 4;
+            case "vineri":
+                return 5;
+            default:
+                return 1;
+        }
+    }
+
+    private int getHourIndexFromString(String hours) {
+        switch (hours) {
+            case "8-10":
+                return 1;
+            case "10-12":
+                return 2;
+            case "12-14":
+                return 3;
+            case "14-16":
+                return 4;
+            case "16-18":
+                return 5;
+            case "18-20":
+                return 6;
+            default:
+                return 1;
+        }
+    }
+
+    List<Course> sortCourses(List<Course> courses) {
+        courses.sort((c1, c2) -> {
+            if (getDayOfWeekFromString(c1.getDay()) < getDayOfWeekFromString(c2.getDay()))
+                return -1;
+            else if (getDayOfWeekFromString(c1.getDay()) > getDayOfWeekFromString(c2.getDay()))
+                return 1;
+            else {
+                return Integer.compare(getHourIndexFromString(c1.getHours()), getHourIndexFromString(c2.getHours()));
+            }
+        });
+
+        return courses;
     }
 
     private Map<Integer, String> intToDay = Map.of(
@@ -64,7 +125,7 @@ public class TimetableController {
             3, "Laborator"
     );
 
-    private Course createCourseFromMapEntry(int dayInt, Tuple3<Integer, Integer, Integer> tuple)
+    private Course createCourseFromMapEntry(int dayInt, Tuple3<Integer, Integer, AdditionalInfo> tuple)
     {
         Course course = new Course();
         course.setYear(2);
@@ -72,9 +133,9 @@ public class TimetableController {
         course.setDay(intToDay.get(dayInt));
         course.setDiscipline(intToDiscipline.get(tuple.first()));
         course.setFrequency("");
-        course.setHours("");
-        course.setGroupOrYear("");
-        course.setRoom("");
+        course.setHours(tuple.third().getHours());
+        course.setGroupOrYear(tuple.third().getGroup());
+        course.setRoom(tuple.third().getRoom());
         course.setType(intToClassType.get(tuple.second()));
         return course;
     }

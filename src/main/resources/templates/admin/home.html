@@ -108,7 +108,142 @@
     <div class="tab-content">
         <!-- Add to class "in active" but then the accordion won't show properly until "First year" gets clicked again -->
         <div role="tabpanel" class="tab-pane fade" id="year1">
+            <div class="accordion" id="accordionExampleYear1">
+                <div class="card">
+                    <div class="card-header" id="heading912">
+                        <h5 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse912" aria-expanded="false" aria-controls="collapse912">
+                                912
+                            </button>
+                        </h5>
+                    </div>
 
+                    <div id="collapse912" class="collapse" aria-labelledby="heading912" data-parent="#accordionExampleYear1">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Day</th>
+                                    <th scope="col">Hours</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Room</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Discipline</th>
+                                    <th scope="col">Teacher</th>
+                                    <th scope="col">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="CNMap : ${courseNoteMap912}">
+                                    <td th:text="${CNMap.key.getDay()}">testday</td>
+                                    <td th:text="${CNMap.key.getHours()}">testhrs</td>
+                                    <td th:text="${CNMap.key.getFrequency()}">testfreq</td>
+                                    <td th:text="${CNMap.key.getRoom()}">testroom</td>
+                                    <td th:text="${CNMap.key.getType()}">testtype</td>
+                                    <td th:text="${CNMap.key.getDiscipline()}">testdiscipline</td>
+                                    <td th:text="${CNMap.key.getTeacher()}">testteacher</td>
+                                    <td>
+                                        <form th:if="${CNMap.value != null}" class="form-inline my-2 my-lg-0">
+                                            <th:block th:switch="${CNMap.value.getType()}">
+                                                <button th:case="'1'" class="btn btn-warning btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note912-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'2'" class="btn btn-danger btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note912-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'3'" class="btn btn-info btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note912-' + ${CNMap.value.getId()}">See note</button>
+
+                                                <div th:if="${CNMap.value != null}" class="modal fade" th:id="'note912-' + ${CNMap.value.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel912" th:text="${CNMap.value.getTitle()}"></h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p th:text="${CNMap.value.getMessage()}"></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </th:block>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="heading914">
+                        <h5 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse914" aria-expanded="false" aria-controls="collapse914">
+                                914
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div id="collapse914" class="collapse" aria-labelledby="haeading914" data-parent="#accordionExampleYear1">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Day</th>
+                                    <th scope="col">Hours</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Room</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Discipline</th>
+                                    <th scope="col">Teacher</th>
+                                    <th scope="col">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="CNMap : ${courseNoteMap914}">
+                                    <td th:text="${CNMap.key.getDay()}">testday</td>
+                                    <td th:text="${CNMap.key.getHours()}">testhrs</td>
+                                    <td th:text="${CNMap.key.getFrequency()}">testfreq</td>
+                                    <td th:text="${CNMap.key.getRoom()}">testroom</td>
+                                    <td th:text="${CNMap.key.getType()}">testtype</td>
+                                    <td th:text="${CNMap.key.getDiscipline()}">testdiscipline</td>
+                                    <td th:text="${CNMap.key.getTeacher()}">testteacher</td>
+                                    <td>
+                                        <form th:if="${CNMap.value != null}" class="form-inline my-2 my-lg-0">
+                                            <th:block th:switch="${CNMap.value.getType()}">
+                                                <button th:case="'1'" class="btn btn-warning btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note914-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'2'" class="btn btn-danger btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note914-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'3'" class="btn btn-info btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note914-' + ${CNMap.value.getId()}">See note</button>
+
+                                                <div th:if="${CNMap.value != null}" class="modal fade" th:id="'note914-' + ${CNMap.value.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel914" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel914" th:text="${CNMap.value.getTitle()}"></h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p th:text="${CNMap.value.getMessage()}"></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </th:block>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="year2">
@@ -252,7 +387,143 @@
         </div>
 
         <div role="tabpanel" class="tab-pane fade" id="year3">
+            <div class="accordion" id="accordionExampleYear3">
+                <div class="card">
+                    <div class="card-header" id="heading935">
+                        <h5 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse935" aria-expanded="false" aria-controls="collapse935">
+                                935
+                            </button>
+                        </h5>
+                    </div>
 
+                    <div id="collapse935" class="collapse" aria-labelledby="heading935" data-parent="#accordionExampleYear3">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Day</th>
+                                    <th scope="col">Hours</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Room</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Discipline</th>
+                                    <th scope="col">Teacher</th>
+                                    <th scope="col">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="CNMap : ${courseNoteMap921}">
+                                    <td th:text="${CNMap.key.getDay()}">testday</td>
+                                    <td th:text="${CNMap.key.getHours()}">testhrs</td>
+                                    <td th:text="${CNMap.key.getFrequency()}">testfreq</td>
+                                    <td th:text="${CNMap.key.getRoom()}">testroom</td>
+                                    <td th:text="${CNMap.key.getType()}">testtype</td>
+                                    <td th:text="${CNMap.key.getDiscipline()}">testdiscipline</td>
+                                    <td th:text="${CNMap.key.getTeacher()}">testteacher</td>
+                                    <td>
+                                        <form th:if="${CNMap.value != null}" class="form-inline my-2 my-lg-0">
+                                            <th:block th:switch="${CNMap.value.getType()}">
+                                                <button th:case="'1'" class="btn btn-warning btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note935-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'2'" class="btn btn-danger btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note935-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'3'" class="btn btn-info btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note935-' + ${CNMap.value.getId()}">See note</button>
+
+                                                <div th:if="${CNMap.value != null}" class="modal fade" th:id="'note935-' + ${CNMap.value.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel935" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel935" th:text="${CNMap.value.getTitle()}"></h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p th:text="${CNMap.value.getMessage()}"></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </th:block>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="heading937">
+                        <h5 class="mb-0">
+                            <button class="btn btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapse937" aria-expanded="false" aria-controls="collapse937">
+                                937
+                            </button>
+                        </h5>
+                    </div>
+                    <div id="collapse937" class="collapse" aria-labelledby="heading937" data-parent="#accordionExample937">
+                        <div class="card-body">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Day</th>
+                                    <th scope="col">Hours</th>
+                                    <th scope="col">Frequency</th>
+                                    <th scope="col">Room</th>
+                                    <th scope="col">Type</th>
+                                    <th scope="col">Discipline</th>
+                                    <th scope="col">Teacher</th>
+                                    <th scope="col">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="CNMap : ${courseNoteMap926}">
+                                    <td th:text="${CNMap.key.getDay()}">testday</td>
+                                    <td th:text="${CNMap.key.getHours()}">testhrs</td>
+                                    <td th:text="${CNMap.key.getFrequency()}">testfreq</td>
+                                    <td th:text="${CNMap.key.getRoom()}">testroom</td>
+                                    <td th:text="${CNMap.key.getType()}">testtype</td>
+                                    <td th:text="${CNMap.key.getDiscipline()}">testdiscipline</td>
+                                    <td th:text="${CNMap.key.getTeacher()}">testteacher</td>
+                                    <td>
+                                        <form th:if="${CNMap.value != null}" class="form-inline my-2 my-lg-0">
+                                            <th:block th:switch="${CNMap.value.getType()}">
+                                                <button th:case="'1'" class="btn btn-warning btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note937-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'2'" class="btn btn-danger btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note937-' + ${CNMap.value.getId()}">See note</button>
+                                                <button th:case="'3'" class="btn btn-info btn-sm my-2 my-sm-0" type="button" data-toggle="modal" th:attr="data-target='#note937-' + ${CNMap.value.getId()}">See note</button>
+
+                                                <!-- Modal -->
+                                                <div th:if="${CNMap.value != null}" class="modal fade" th:id="'note937-' + ${CNMap.value.getId()}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel937" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel937" th:text="${CNMap.value.getTitle()}"></h5>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <p th:text="${CNMap.value.getMessage()}"></p>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </th:block>
+                                        </form>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

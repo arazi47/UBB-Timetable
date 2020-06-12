@@ -28,16 +28,27 @@ public class OnAppEvent implements ApplicationListener<ContextRefreshedEvent> {
         // Run this once
         // year 2, sem 2
         /*
-        for (Course c: this.loadSubjects("C:\\Users\\necso\\Desktop\\ubbtt\\src\\main\\java\\com\\razi\\ubbtt\\OnAppEvent\\y2s2.txt")) {
+        for (Course c: this.loadSubjects("D:\\ubbtt\\src\\main\\java\\com\\razi\\ubbtt\\OnAppEvent\\y2s2.txt", 2, 2)) {
             courseRepository.save(c);
+            System.out.println("Saved");
         }
-        */
+
+        for (Course c: this.loadSubjects("D:\\ubbtt\\src\\main\\java\\com\\razi\\ubbtt\\OnAppEvent\\fake_y1s2.txt", 1, 2)) {
+            courseRepository.save(c);
+            System.out.println("Saved");
+        }
+
+        for (Course c: this.loadSubjects("D:\\ubbtt\\src\\main\\java\\com\\razi\\ubbtt\\OnAppEvent\\fake_y3s2.txt", 3, 2)) {
+            courseRepository.save(c);
+            System.out.println("Saved");
+        }
+         */
 
         //loadAllWeeks();
         //buildWeekCourseNotes();
     }
 
-    private List<Course> loadSubjects(String fullPath) {
+    private List<Course> loadSubjects(String fullPath, int year, int semester) {
         List<Course> courseList = new ArrayList<>();
         try {
             BufferedReader br = new BufferedReader(new FileReader(new File(fullPath)));
@@ -45,8 +56,8 @@ public class OnAppEvent implements ApplicationListener<ContextRefreshedEvent> {
             String line;
             while ((line = br.readLine()) != null) {
                 Course c = Course.parseFromFile(line);
-                c.setYear(2);
-                c.setSemester(2);
+                c.setYear(year);
+                c.setSemester(semester);
                 courseList.add(c);
             }
         } catch (Exception e) {

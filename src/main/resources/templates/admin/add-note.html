@@ -89,13 +89,13 @@
     <form class="form-create-proposal" th:object="${noteForm}" th:action="@{'/admin/add-note'}" method="POST">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
             <label class="btn btn-outline-warning active">
-                <input type="radio" name="options" id="option1" autocomplete="off" value="1" th:field="*{type}"> Hours changed
+                <input type="radio" name="options" id="option1" autocomplete="off" th:value="1" th:field="*{type}"> Hours changed
             </label>
             <label class="btn btn-outline-danger">
-                <input type="radio" name="options" id="option2" autocomplete="off" value="2" th:field="*{type}"> Lecture canceled
+                <input type="radio" name="options" id="option2" autocomplete="off" th:value="2" th:field="*{type}"> Lecture canceled
             </label>
             <label class="btn btn-outline-info">
-                <input type="radio" name="options" id="option3" autocomplete="off" value="3" th:field="*{type}"> Other
+                <input type="radio" name="options" id="option3" autocomplete="off" th:value="3" th:field="*{type}"> Other
             </label>
         </div>
 

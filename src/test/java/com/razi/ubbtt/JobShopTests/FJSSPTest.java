@@ -1,8 +1,8 @@
 package com.razi.ubbtt.JobShopTests;
 
 import com.razi.ubbtt.Utils.Tuple3;
-import com.razi.ubbtt.JobShop.FJSSPSolver;
-import com.razi.ubbtt.JobShop.Job;
+import com.razi.ubbtt.JobShop.solvers.FJSSPSolver;
+import com.razi.ubbtt.JobShop.jobs.Job;
 import org.junit.Test;
 
 import java.util.*;
@@ -309,7 +309,7 @@ public class FJSSPTest {
         }
     }
 
-    private void generateJobs(Set<Job> jobs) {
+    private void generateJobs(List<Job> jobs) {
         for (int j = 0; j < this.jobCount; ++j) {
             Job job = new Job(j + 1, operationCountForJob.get(j), getOperationsDurationMapForJob(j + 1));
             jobs.add(job);
@@ -318,16 +318,32 @@ public class FJSSPTest {
 
     @Test
     public void ACOExampleTest() {
-        Set<Job> jobs = new HashSet<>();
+        List<Job> jobs = new ArrayList<>();
         generateJobs(jobs);
 
-        assertEquals(jobs.size(), jobCount);
+        assertEquals(jobCount, jobs.size());
 
-        FJSSPSolver solver = new FJSSPSolver(jobCount, machineCount, jobs);
-        solver.solve();
+        int min = -1;
+        int max = -1;
+        double mean = 0;
+        for (int i = 0; i < 1000; ++i) {
+            FJSSPSolver solver = new FJSSPSolver(jobCount, machineCount, jobs);
+            solver.solve();
+            if (min == -1 || solver.getMakespan() < min)
+                min = solver.getMakespan();
+            if (max == -1 || solver.getMakespan() > max)
+                max = solver.getMakespan();
+            mean += solver.getMakespan();
+            //System.out.println(solver.getMakespan());
+            //solver.printSequences();
+        }
 
-        solver.printSequences();
+        System.out.println("Mean = " + mean / 1000);
 
-        // TODO assert the sequence
+        System.out.println("Min = " + min);
+
+        System.out.println("Max = " + max);
+
+        //assertEquals(52, solver.getMakespan());
     }
 }

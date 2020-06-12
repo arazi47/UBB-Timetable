@@ -73,7 +73,6 @@ public class NoteController {
             model.addAttribute("username", principal.getName());
         }
 
-        // TODO change all IDs to Long in the domain
         model.addAttribute("noteForm", noteRepository.findById(id).get());
         addNoteAttributesToModel(model);
 
@@ -83,7 +82,7 @@ public class NoteController {
     private void addNoteAttributesToModel(Model model) {
         model.addAttribute("disciplines", courseRepository.getDisciplinesBySemester(weekRepository.getCurrentSemester()));
         model.addAttribute("weeks", weekRepository.getWeeksFromCurrentUntilTheEndOfTheSemester(weekRepository.getCurrentWeek().getWeekNumber(), weekRepository.getCurrentSemester()));
-        model.addAttribute("groups", Arrays.asList("921", "921/1", "921/2", "922", "922/1", "922/2", "923", "923/1", "923/2", "924", "924/1", "924/2", "925", "925/1", "925/2", "926", "926/1", "926/2", "927", "927/1", "927/2", "IE2"));
+        model.addAttribute("groups", Arrays.asList("921", "921/1", "921/2", "922", "922/1", "922/2", "923", "923/1", "923/2", "924", "924/1", "924/2", "925", "925/1", "925/2", "926", "926/1", "926/2", "927", "927/1", "927/2", "IE2", "IE1", "IE3", "912", "912/1", "912/2", "914", "914/1", "914/2", "935", "935/1", "935/2", "937", "937/1", "937/2"));
         model.addAttribute("courseTypes", Arrays.asList("Curs", "Seminar", "Laborator"));
     }
 

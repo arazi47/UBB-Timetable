@@ -87,14 +87,14 @@
 <div class="container text-center">
     <form class="form-create-proposal" th:object="${noteForm}" th:action="@{'/admin/my-notes/' + ${noteForm.getId()} + '/edit'}" method="POST">
         <div class="btn-group btn-group-toggle" data-toggle="buttons">
-            <label class="btn btn-outline-warning active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> Hours changed
+            <label class="btn btn-outline-warning" th:classappend="*{type == '1'} ? 'active' : ''">
+                <input type="radio" name="options" id="option1" autocomplete="off" th:value="1" th:field="*{type}"> Hours changed
             </label>
-            <label class="btn btn-outline-danger">
-                <input type="radio" name="options" id="option2" autocomplete="off"> Lecture canceled
+            <label class="btn btn-outline-danger" th:classappend="*{type == '2'} ? 'active' : ''">
+                <input type="radio" name="options" id="option2" autocomplete="off" th:value="2" th:field="*{type}"> Lecture canceled
             </label>
-            <label class="btn btn-outline-info">
-                <input type="radio" name="options" id="option3" autocomplete="off"> Other
+            <label class="btn btn-outline-info" th:classappend="*{type == '3'} ? 'active' : ''">
+                <input type="radio" name="options" id="option3" autocomplete="off" th:value="3" th:field="*{type}"> Other
             </label>
         </div>
 

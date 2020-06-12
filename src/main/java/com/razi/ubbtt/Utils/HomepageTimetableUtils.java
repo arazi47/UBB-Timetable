@@ -5,7 +5,6 @@ import com.razi.ubbtt.domain.Note;
 import com.razi.ubbtt.repositories.CourseRepository;
 import com.razi.ubbtt.repositories.NoteRepository;
 import com.razi.ubbtt.repositories.WeekRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -42,12 +41,25 @@ public class HomepageTimetableUtils {
         }
 
         return courseNoteMap;
-    }
+    }   
 
     public List<Map<Course, Note>> generateAllCourseNoteMaps() {
         List<Map<Course, Note>> courseNoteMapList = new ArrayList<>();
+        courseNoteMapList.add(generateCourseNoteMapForGroup("912"));
+        courseNoteMapList.add(generateCourseNoteMapForGroup("914"));
         courseNoteMapList.add(generateCourseNoteMapForGroup("921"));
         courseNoteMapList.add(generateCourseNoteMapForGroup("926"));
+        courseNoteMapList.add(generateCourseNoteMapForGroup("935"));
+        courseNoteMapList.add(generateCourseNoteMapForGroup("937"));
+
+        for (Map<Course, Note> courseNoteMap: courseNoteMapList) {
+            for (Map.Entry<Course, Note> entry : courseNoteMap.entrySet()) {
+                entry.getKey().setDay(ClassUtils.dayFromRoToEn(entry.getKey().getDay()));
+                entry.getKey().setType(ClassUtils.typeFromRoToEn(entry.getKey().getType()));
+                entry.getKey().setDiscipline(ClassUtils.disciplineFromRoToEn(entry.getKey().getDiscipline()));
+                entry.getKey().setFrequency(ClassUtils.frequencyFromRoToEn(entry.getKey().getFrequency()));
+            }
+        }
 
         return courseNoteMapList;
     }

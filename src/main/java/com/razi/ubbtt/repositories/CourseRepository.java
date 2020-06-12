@@ -38,6 +38,6 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
      *
      * When a teacher wants to add a note, we'll get all the disciplines from the semester we're currently in
      */
-    @Query(value = "SELECT DISTINCT C.discipline FROM Course C WHERE C.semester=(:semester)")
+    @Query(value = "SELECT DISTINCT C.discipline FROM Course C WHERE C.semester=(:semester) ORDER BY C.discipline ASC")
     Set<String> getDisciplinesBySemester(@Param("semester") int semester);
 }
