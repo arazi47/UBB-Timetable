@@ -52,6 +52,7 @@ public class HomepageTimetableUtils {
         courseNoteMapList.add(generateCourseNoteMapForGroup("935"));
         courseNoteMapList.add(generateCourseNoteMapForGroup("937"));
 
+        // Translate classes from Romanian to English
         for (Map<Course, Note> courseNoteMap: courseNoteMapList) {
             for (Map.Entry<Course, Note> entry : courseNoteMap.entrySet()) {
                 entry.getKey().setDay(ClassUtils.dayFromRoToEn(entry.getKey().getDay()));
