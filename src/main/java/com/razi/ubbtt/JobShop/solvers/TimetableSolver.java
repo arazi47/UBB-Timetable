@@ -3,7 +3,6 @@ package com.razi.ubbtt.JobShop.solvers;
 import com.razi.ubbtt.JobShop.jobs.ClassJob;
 import com.razi.ubbtt.JobShop.utils.AdditionalInfo;
 import com.razi.ubbtt.Utils.Tuple3;
-import net.bytebuddy.implementation.bytecode.Addition;
 
 import java.util.*;
 
@@ -35,29 +34,14 @@ public class TimetableSolver {
         List<Integer> jobOperations = new ArrayList<>(Collections.nCopies(jobCount, 1));
 
         int j = 0;
-        boolean roomHeuristicApplied;
         while (jobOperationsStillNeedToBeProcessed(jobOperations)) {
-            roomHeuristicApplied = true;
             Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
             if (jobOperations.get(j) > 1) {
                 bestEntry = tryGetBestMachineForJobOperationAfterMachineWithRoomHeuristic(getMachineThatCompletedJobOperationBefore(j + 1, jobOperations.get(j)), j + 1, jobOperations.get(j));
-
-                while (bestEntry != null && !studentIsFreeAtDayAndHour(bestEntry.getKey().first(), bestEntry.getValue().getHours())) {
-                    removeEntryFromOperationDurationMap(bestEntry);
-
-                    bestEntry = tryGetBestMachineForJobOperationAfterMachineWithRoomHeuristic(getMachineThatCompletedJobOperationBefore(j + 1, jobOperations.get(j)), j + 1, jobOperations.get(j));
-                }
             }
 
             if (bestEntry == null) {
-                roomHeuristicApplied = false;
                 bestEntry = getBestMachineForJobOperation(j + 1, jobOperations.get(j));
-
-                while (bestEntry != null && !studentIsFreeAtDayAndHour(bestEntry.getKey().first(), bestEntry.getValue().getHours())) {
-                    removeEntryFromOperationDurationMap(bestEntry);
-
-                    bestEntry = getBestMachineForJobOperation(j + 1, jobOperations.get(j));
-                }
             }
 
             if (bestEntry != null) {
@@ -66,13 +50,9 @@ public class TimetableSolver {
                 List<Tuple3<Integer, Integer, AdditionalInfo>> sequenceList = sequences.get(bestEntry.getKey().first());
 
                 if (sequenceList.size() == 0)
-                    bestEntry.getValue().setHours(TimetableSolver.indexToHours(sequenceList.size()));
-                else {
-                    //if (roomHeuristicApplied)
-                        bestEntry.getValue().setHours(TimetableSolver.hoursAfter(sequenceList.get(sequenceList.size() - 1).third().getHours()));
-                    //else
-                    //    bestEntry.getValue().setHours(TimetableSolver.hoursAfterPlusGapIfPossible(sequenceList.get(sequenceList.size() - 1).third().getHours()));
-                }
+                    bestEntry.getValue().setHours("8-10");
+                else
+                    bestEntry.getValue().setHours(TimetableSolver.hoursAfter(sequenceList.get(sequenceList.size() - 1).third().getHours()));
                 sequenceList.add(new Tuple3<>(bestEntry.getKey().second(), bestEntry.getKey().third(), bestEntry.getValue()));
 
                 jobOperations.set(j, jobOperations.get(j) + 1);
@@ -83,16 +63,9 @@ public class TimetableSolver {
                 j = 0;
             else
                 ++j;
-
-            //if (jobOperations.get(j) == jobs.get(j).getOperations() + 1)
-            //    ++j;
         }
 
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
-            //for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
-
-            //}
-
             for (int i = 0; i < entry.getValue().size() - 1; ++i) {
                 if (!isSameBuilding(entry.getValue().get(i).third().getRoom(), entry.getValue().get(i + 1).third().getRoom())) {
                     if (!entry.getValue().get(entry.getValue().size() - 1).third().getHours().equals("18-20")) {
@@ -129,87 +102,6 @@ public class TimetableSolver {
         }
     }
 
-    private static String hoursAfterPlusGapIfPossible(String hours) {
-        switch (hours) {
-            case "8-10":
-                return "12-14";
-            case "10-12":
-                return "14-16";
-            case "12-14":
-                return "16-18";
-            case "14-16":
-                return "18-20";
-            default:
-                return hours;
-        }
-    }
-
-    private void reset() {
-        operationsDurationMapAll.clear();
-        combineOperationMaps();
-        sequences.clear();
-        initializeSequences();
-    }
-
-    private static String indexToHours(int i) {
-        switch (i) {
-            case 0:
-                return "8-10";
-
-            case 1:
-                return "10-12";
-
-            case 2:
-                return "12-14";
-
-            case 3:
-                return "14-16";
-
-            case 4:
-                return "16-18";
-
-            case 5:
-                return "18-20";
-
-            default:
-                return "8-10";
-        }
-    }
-
-    private void removeEntryFromOperationDurationMap(Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry) {
-        final int machineId = bestEntry.getKey().first();
-        final int jobId = bestEntry.getKey().second();
-        final int operationId = bestEntry.getKey().third();
-        operationsDurationMapAll.entrySet().removeIf(e -> e.getKey().first() == machineId && e.getKey().second() == jobId && e.getKey().third() == operationId);
-    }
-
-    public boolean studentIsFreeAtDayAndHour(int day, String hours) {/*
-        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
-            for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
-                if (entry.getKey() == day && hours.equals(tuple.third().getHours()))
-                    return false;
-            }
-        }*/
-
-        return true;
-    }
-
-    public Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> getBestMachineForJobOperationWithRoomHeuristic(int jobId, int operationId) {
-        Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
-        for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
-            if (sequences.get(entry.getKey().first()).size() > 0 && isSameBuilding(entry.getValue().getRoom(), sequences.get(entry.getKey().first()).get(sequences.get(entry.getKey().first()).size() - 1).third().getRoom())) {
-                if (entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
-                    if (bestEntry == null)
-                        bestEntry = entry;
-                    else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
-                        bestEntry = entry;
-                }
-            }
-        }
-
-        return bestEntry;
-    }
-
     /**
      *
      * @param jobId ranging from 1 to jobCount
@@ -224,23 +116,10 @@ public class TimetableSolver {
                     bestEntry = entry;
                 else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
                     bestEntry = entry;
-
-                /*if (entry.getValue().getPriority() == bestEntry.getValue().getPriority()
-                && entry.getKey().first() <= bestEntry.getKey().first())
-                    bestEntry = entry;*/
-
-                /*if (entry.getValue().getPriority() == bestEntry.getValue().getPriority()
-                        && entry.getKey().first() <= bestEntry.getKey().first()
-                        && isEarlier(entry.getValue().getHours(), bestEntry.getValue().getHours()))
-                    bestEntry = entry;*/
             }
         }
 
         return bestEntry;
-    }
-
-    private boolean isEarlier(String hours1, String hours2) {
-        return Integer.valueOf(hours1.split("-")[1]) <= Integer.valueOf(hours2.split("-")[1]);
     }
 
     private boolean isSameBuilding(String room1, String room2) {
@@ -281,29 +160,6 @@ public class TimetableSolver {
         return bestEntry;
     }
 
-    /**
-     *
-     * @param machineId machine of the id that completed (jobId, operationId - 1)
-     * @return the entry from operationDurationMapAll which takes the least time to complete
-     */
-    private Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> tryGetBestMachineForJobOperationAfterMachine(int machineId, int jobId, int operationId) {
-        Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
-        for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
-            if (entry.getKey().first() >= machineId && entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
-                if (bestEntry == null)
-                    bestEntry = entry;
-                else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
-                    bestEntry = entry;
-
-                //if (Math.random() < 0.2)
-                //    if (dayWithLeastClassesThatCanRun(jobId, operationId) != null)
-                //        return dayWithLeastClassesThatCanRun(jobId, operationId);
-            }
-        }
-
-        return bestEntry;
-    }
-
     private Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> dayWithLeastClassesThatCanRun(int jobId, int operationId) {
         Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
         for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
@@ -338,7 +194,7 @@ public class TimetableSolver {
      * @param operationId ID of the job operation
      * @return returns the machine ID which completed operation operationId - 1 for jobId
      */
-    int getMachineThatCompletedJobOperationBefore(int jobId, int operationId) {
+    private int getMachineThatCompletedJobOperationBefore(int jobId, int operationId) {
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry: sequences.entrySet()) {
             for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
                 if (tuple.first() == jobId && tuple.second() == operationId - 1)
@@ -373,26 +229,8 @@ public class TimetableSolver {
      * @param jobId  ranging from 1 to jobCount
      * @param operationId ranging from 1 to the number of operations there are for the specified jobId
      */
-    void removeEntriesForJobAndOperation(int jobId, int operationId) {
+    private void removeEntriesForJobAndOperation(int jobId, int operationId) {
         operationsDurationMapAll.entrySet().removeIf(e -> e.getKey().second() == jobId && e.getKey().third() == operationId);
-    }
-
-    /**
-     * For debugging purposes
-     */
-    public void printSequences() {
-        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
-            System.out.println("=============== MACHINE " + entry.getKey() + " ===============");
-            for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
-                System.out.println("Job = " + tuple.first() + "; Operation = " + tuple.second() + "; Duration = " + tuple.third());
-            }
-
-            System.out.println("=======================================");
-        }
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     public Map<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> getSequences() {
