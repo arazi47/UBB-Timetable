@@ -35,7 +35,9 @@ public class TimetableSolver {
         List<Integer> jobOperations = new ArrayList<>(Collections.nCopies(jobCount, 1));
 
         int j = 0;
+        boolean roomHeuristicApplied;
         while (jobOperationsStillNeedToBeProcessed(jobOperations)) {
+            roomHeuristicApplied = true;
             Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
             if (jobOperations.get(j) > 1) {
                 bestEntry = tryGetBestMachineForJobOperationAfterMachineWithRoomHeuristic(getMachineThatCompletedJobOperationBefore(j + 1, jobOperations.get(j)), j + 1, jobOperations.get(j));
@@ -48,6 +50,7 @@ public class TimetableSolver {
             }
 
             if (bestEntry == null) {
+                roomHeuristicApplied = false;
                 bestEntry = getBestMachineForJobOperation(j + 1, jobOperations.get(j));
 
                 while (bestEntry != null && !studentIsFreeAtDayAndHour(bestEntry.getKey().first(), bestEntry.getValue().getHours())) {
@@ -61,18 +64,91 @@ public class TimetableSolver {
                 removeEntriesForJobAndOperation(j + 1, jobOperations.get(j));
 
                 List<Tuple3<Integer, Integer, AdditionalInfo>> sequenceList = sequences.get(bestEntry.getKey().first());
-                bestEntry.getValue().setHours(TimetableSolver.indexToHours(sequenceList.size()));
+
+                if (sequenceList.size() == 0)
+                    bestEntry.getValue().setHours(TimetableSolver.indexToHours(sequenceList.size()));
+                else {
+                    //if (roomHeuristicApplied)
+                        bestEntry.getValue().setHours(TimetableSolver.hoursAfter(sequenceList.get(sequenceList.size() - 1).third().getHours()));
+                    //else
+                    //    bestEntry.getValue().setHours(TimetableSolver.hoursAfterPlusGapIfPossible(sequenceList.get(sequenceList.size() - 1).third().getHours()));
+                }
                 sequenceList.add(new Tuple3<>(bestEntry.getKey().second(), bestEntry.getKey().third(), bestEntry.getValue()));
 
                 jobOperations.set(j, jobOperations.get(j) + 1);
             }
 
-        // Start again from the first job
-        if (j == jobOperations.size() - 1)
-            j = 0;
-        else
-            ++j;
+            // Start again from the first job
+            if (j == jobOperations.size() - 1)
+                j = 0;
+            else
+                ++j;
+
+            //if (jobOperations.get(j) == jobs.get(j).getOperations() + 1)
+            //    ++j;
         }
+
+        for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
+            //for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
+
+            //}
+
+            for (int i = 0; i < entry.getValue().size() - 1; ++i) {
+                if (!isSameBuilding(entry.getValue().get(i).third().getRoom(), entry.getValue().get(i + 1).third().getRoom())) {
+                    if (!entry.getValue().get(entry.getValue().size() - 1).third().getHours().equals("18-20")) {
+                        advanceHours(entry.getValue(), i + 1);
+                    }
+                }
+            }
+        }
+    }
+
+    private void advanceHours(List<Tuple3<Integer, Integer, AdditionalInfo>> sequenceList, int fromIndex) {
+        for (int i = fromIndex; i < sequenceList.size(); ++i) {
+            sequenceList.get(i).third().setHours(hoursAfter(sequenceList.get(i).third().getHours()));
+        }
+    }
+
+    private static String hoursAfter(String hours) {
+        switch (hours) {
+            case "8-10":
+                return "10-12";
+            case "10-12":
+                return "12-14";
+            case "12-14":
+                return "14-16";
+            case "14-16":
+                return "16-18";
+            case "16-18":
+                return "18-20";
+            case "18-20":
+                return "18-20";
+            default:
+                System.out.println(hours);
+                return "ERROR";
+        }
+    }
+
+    private static String hoursAfterPlusGapIfPossible(String hours) {
+        switch (hours) {
+            case "8-10":
+                return "12-14";
+            case "10-12":
+                return "14-16";
+            case "12-14":
+                return "16-18";
+            case "14-16":
+                return "18-20";
+            default:
+                return hours;
+        }
+    }
+
+    private void reset() {
+        operationsDurationMapAll.clear();
+        combineOperationMaps();
+        sequences.clear();
+        initializeSequences();
     }
 
     private static String indexToHours(int i) {
@@ -107,14 +183,13 @@ public class TimetableSolver {
         operationsDurationMapAll.entrySet().removeIf(e -> e.getKey().first() == machineId && e.getKey().second() == jobId && e.getKey().third() == operationId);
     }
 
-    // machineId == day
-    public boolean studentIsFreeAtDayAndHour(int machineId, String hours) {
+    public boolean studentIsFreeAtDayAndHour(int day, String hours) {/*
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
             for (Tuple3<Integer, Integer, AdditionalInfo> tuple : entry.getValue()) {
-                if (entry.getKey() == machineId && hours.equals(tuple.third().getHours()))
+                if (entry.getKey() == day && hours.equals(tuple.third().getHours()))
                     return false;
             }
-        }
+        }*/
 
         return true;
     }
@@ -144,7 +219,7 @@ public class TimetableSolver {
     public Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> getBestMachineForJobOperation(int jobId, int operationId) {
         Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
         for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
-            if (entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
+            if (entry.getKey().second() == jobId && entry.getKey().third() == operationId && sequences.get(entry.getKey().first()).size() < 6) {
                 if (bestEntry == null)
                     bestEntry = entry;
                 else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
@@ -176,10 +251,10 @@ public class TimetableSolver {
         if (matematicum.contains(room1) && matematicum.contains(room2))
             return true;
 
-        if (fsega.contains(room1) && matematicum.contains(room2))
+        if (fsega.contains(room1) && fsega.contains(room2))
             return true;
 
-        if (central.contains(room1) && matematicum.contains(room2))
+        if (central.contains(room1) && central.contains(room2))
             return true;
 
         return false;
@@ -194,7 +269,7 @@ public class TimetableSolver {
         Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
         for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
             if (entry.getKey().first() >= machineId && entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
-                if (sequences.get(entry.getKey().first()).size() > 0 && isSameBuilding(entry.getValue().getRoom(), sequences.get(entry.getKey().first()).get(sequences.get(entry.getKey().first()).size() - 1).third().getRoom())) {
+                if (sequences.get(entry.getKey().first()).size() > 0 && sequences.get(entry.getKey().first()).size() < 6 && isSameBuilding(entry.getValue().getRoom(), sequences.get(entry.getKey().first()).get(sequences.get(entry.getKey().first()).size() - 1).third().getRoom())) {
                     if (bestEntry == null)
                         bestEntry = entry;
                     else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
@@ -218,6 +293,24 @@ public class TimetableSolver {
                 if (bestEntry == null)
                     bestEntry = entry;
                 else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
+                    bestEntry = entry;
+
+                //if (Math.random() < 0.2)
+                //    if (dayWithLeastClassesThatCanRun(jobId, operationId) != null)
+                //        return dayWithLeastClassesThatCanRun(jobId, operationId);
+            }
+        }
+
+        return bestEntry;
+    }
+
+    private Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> dayWithLeastClassesThatCanRun(int jobId, int operationId) {
+        Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
+        for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
+            if (entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
+                if (bestEntry == null)
+                    bestEntry = entry;
+                if (sequences.get(entry.getKey().first()).size() < sequences.get(bestEntry.getKey().first()).size())
                     bestEntry = entry;
             }
         }

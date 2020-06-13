@@ -125,6 +125,15 @@ public class TimetableController {
             3, "Laborator"
     );
 
+    private String intToClassType(int subjectId, int type) {
+        if (subjectId == 6)
+            return "Seminar";
+        else if (subjectId == 1 && type == 2)
+            return "Laborator";
+
+        return intToClassType.get(type);
+    }
+
     private Course createCourseFromMapEntry(int dayInt, Tuple3<Integer, Integer, AdditionalInfo> tuple)
     {
         Course course = new Course();
@@ -136,7 +145,7 @@ public class TimetableController {
         course.setHours(tuple.third().getHours());
         course.setGroupOrYear(tuple.third().getGroup());
         course.setRoom(tuple.third().getRoom());
-        course.setType(intToClassType.get(tuple.second()));
+        course.setType(intToClassType(tuple.first(), tuple.second()));
         return course;
     }
 
