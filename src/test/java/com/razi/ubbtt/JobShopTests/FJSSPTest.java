@@ -317,6 +317,24 @@ public class FJSSPTest {
     }
 
     @Test
+    public void FJSSPTest() {
+        List<Job> jobs = new ArrayList<>();
+        generateJobs(jobs);
+
+        assertEquals(jobCount, jobs.size());
+
+        FJSSPSolver solver = new FJSSPSolver(jobCount, machineCount, jobs);
+
+        assertTrue(solver.jobOperationsStillNeedToBeProcessed());
+        assertEquals(0, solver.getMachineThatCompletedJobOperationBefore(1, 2));
+
+        solver.solve();
+
+        assertFalse(solver.jobOperationsStillNeedToBeProcessed());
+        assertEquals(3, solver.getMachineThatCompletedJobOperationBefore(1, 2));
+
+    }
+
     public void ACOExampleTest() {
         List<Job> jobs = new ArrayList<>();
         generateJobs(jobs);
@@ -326,24 +344,24 @@ public class FJSSPTest {
         int min = -1;
         int max = -1;
         double mean = 0;
+        long start = 0, end = 0;
+        double timeMean = 0;
         for (int i = 0; i < 1000; ++i) {
             FJSSPSolver solver = new FJSSPSolver(jobCount, machineCount, jobs);
+            start = System.currentTimeMillis();
             solver.solve();
+            end = System.currentTimeMillis();
+            timeMean += (end - start);
             if (min == -1 || solver.getMakespan() < min)
                 min = solver.getMakespan();
             if (max == -1 || solver.getMakespan() > max)
                 max = solver.getMakespan();
             mean += solver.getMakespan();
-            //System.out.println(solver.getMakespan());
-            //solver.printSequences();
         }
 
+        System.out.println("Time mean = " + timeMean / 1000);
         System.out.println("Mean = " + mean / 1000);
-
         System.out.println("Min = " + min);
-
         System.out.println("Max = " + max);
-
-        //assertEquals(52, solver.getMakespan());
     }
 }

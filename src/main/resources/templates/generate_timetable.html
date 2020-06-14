@@ -76,7 +76,6 @@
         <tr>
             <th scope="col">Day</th>
             <th scope="col">Hours</th>
-            <th scope="col">Frequency</th>
             <th scope="col">Room</th>
             <th scope="col">Group</th>
             <th scope="col">Type</th>
@@ -88,7 +87,6 @@
         <tr th:each="course : ${timetable}">
             <td th:text="${course.getDay()}">testday</td>
             <td th:text="${course.getHours()}">testhrs</td>
-            <td th:text="${course.getFrequency()}">testfreq</td>
             <td th:text="${course.getRoom()}">testroom</td>
             <td th:text="${course.getGroupOrYear()}">testgroup</td>
             <td th:text="${course.getType()}">testtype</td>

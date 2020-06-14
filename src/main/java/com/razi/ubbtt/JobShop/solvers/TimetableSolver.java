@@ -7,13 +7,15 @@ import com.razi.ubbtt.Utils.Tuple3;
 import java.util.*;
 
 public class TimetableSolver {
-    int jobCount;
-    List<ClassJob> jobs;
-    int machineCount;
+    private int jobCount;
+    private List<ClassJob> jobs;
+    private int machineCount;
 
     // For all the jobs
-    Map<Tuple3<Integer, Integer, Integer>, AdditionalInfo> operationsDurationMapAll = new HashMap<>();
-    Map<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> sequences = new HashMap<>();
+    private Map<Tuple3<Integer, Integer, Integer>, AdditionalInfo> operationsDurationMapAll = new HashMap<>();
+    private Map<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> sequences = new HashMap<>();
+    private List<Integer> jobOperations;
+
 
     public TimetableSolver(int jobCount, int machineCount, List<ClassJob> jobs) {
         this.jobCount = jobCount;
@@ -22,6 +24,7 @@ public class TimetableSolver {
 
         combineOperationMaps();
         initializeSequences();
+        initializeJobOperations();
     }
 
     /**
@@ -31,8 +34,6 @@ public class TimetableSolver {
      * on the machines (aka days).
      */
     public void solve() {
-        List<Integer> jobOperations = new ArrayList<>(Collections.nCopies(jobCount, 1));
-
         int j = 0;
         while (jobOperationsStillNeedToBeProcessed(jobOperations)) {
             Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
@@ -49,6 +50,7 @@ public class TimetableSolver {
 
                 List<Tuple3<Integer, Integer, AdditionalInfo>> sequenceList = sequences.get(bestEntry.getKey().first());
 
+                // First class of the day
                 if (sequenceList.size() == 0)
                     bestEntry.getValue().setHours("8-10");
                 else
@@ -65,6 +67,15 @@ public class TimetableSolver {
                 ++j;
         }
 
+        insertGapsBetweenClassesInDifferentBuildingsIfPossible();
+    }
+
+    /**
+     * Advances the hours for the timetable if possible
+     * (i.e. there is still time in the day)
+     * and if two successive classes are not in the same building
+     */
+    private void insertGapsBetweenClassesInDifferentBuildingsIfPossible() {
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, AdditionalInfo>>> entry : sequences.entrySet()) {
             for (int i = 0; i < entry.getValue().size() - 1; ++i) {
                 if (!isSameBuilding(entry.getValue().get(i).third().getRoom(), entry.getValue().get(i + 1).third().getRoom())) {
@@ -76,12 +87,22 @@ public class TimetableSolver {
         }
     }
 
+    /**
+     *
+     * @param sequenceList list of classes for a day
+     * @param fromIndex starting index from which all classes will be advanced
+     */
     private void advanceHours(List<Tuple3<Integer, Integer, AdditionalInfo>> sequenceList, int fromIndex) {
         for (int i = fromIndex; i < sequenceList.size(); ++i) {
             sequenceList.get(i).third().setHours(hoursAfter(sequenceList.get(i).third().getHours()));
         }
     }
 
+    /**
+     *
+     * @param hours a string which contains the hours that a class is at
+     * @return a string representing the next two hours after the current ones
+     */
     private static String hoursAfter(String hours) {
         switch (hours) {
             case "8-10":
@@ -108,7 +129,7 @@ public class TimetableSolver {
      * @param operationId ranging from 1 to each job's number of operations
      * @return the entry from operationDurationMapAll which takes the least time to complete
      */
-    public Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> getBestMachineForJobOperation(int jobId, int operationId) {
+    private Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> getBestMachineForJobOperation(int jobId, int operationId) {
         Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
         for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
             if (entry.getKey().second() == jobId && entry.getKey().third() == operationId && sequences.get(entry.getKey().first()).size() < 6) {
@@ -122,6 +143,12 @@ public class TimetableSolver {
         return bestEntry;
     }
 
+    /**
+     *
+     * @param room1 the room of the previous class
+     * @param room2 the room of the class that we want to insert into the sequence
+     * @return checks if room1 and room2 are in the same building
+     */
     private boolean isSameBuilding(String room1, String room2) {
         List<String> central = Arrays.asList("2/I", "6/II", "7/II");
         List<String> fsega = Arrays.asList("L301", "L302", "L303", "L304", "L305", "L306", "L307", "L308", "L309", "L336", "L338", "L300", "C510", "C512", "L311", "L313", "C308", "C312", "C310");
@@ -154,20 +181,6 @@ public class TimetableSolver {
                     else if (entry.getValue().getPriority() < bestEntry.getValue().getPriority())
                         bestEntry = entry;
                 }
-            }
-        }
-
-        return bestEntry;
-    }
-
-    private Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> dayWithLeastClassesThatCanRun(int jobId, int operationId) {
-        Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> bestEntry = null;
-        for (Map.Entry<Tuple3<Integer, Integer, Integer>, AdditionalInfo> entry : operationsDurationMapAll.entrySet()) {
-            if (entry.getKey().second() == jobId && entry.getKey().third() == operationId) {
-                if (bestEntry == null)
-                    bestEntry = entry;
-                if (sequences.get(entry.getKey().first()).size() < sequences.get(bestEntry.getKey().first()).size())
-                    bestEntry = entry;
             }
         }
 
@@ -212,6 +225,13 @@ public class TimetableSolver {
         for (int m = 1; m <= machineCount; ++m) {
             sequences.put(m, new ArrayList<>());
         }
+    }
+
+    /**
+     * Initialize all the job operations to the first one
+     */
+    private void initializeJobOperations() {
+        jobOperations = new ArrayList<>(Collections.nCopies(jobCount, 1));
     }
 
     /**

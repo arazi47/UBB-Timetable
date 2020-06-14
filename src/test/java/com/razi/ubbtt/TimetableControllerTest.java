@@ -1,4 +1,4 @@
-package com.razi.ubbtt.JobShopTests;
+package com.razi.ubbtt;
 
 import com.razi.ubbtt.controllers.TimetableController;
 import org.junit.Test;

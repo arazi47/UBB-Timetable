@@ -9,12 +9,14 @@ import java.util.List;
 import java.util.Map;
 
 public class FJSSPSolver extends JobShopSolver {
+    private List<Integer> jobOperations;
     public FJSSPSolver(int jobCount, int machineCount, List<Job> jobs) {
         super(jobCount, machineCount, jobs);
 
         combineOperationMaps();
         initializeSequences();
         initializeMakespans();
+        initializeJobOperations();
     }
 
     /**
@@ -22,11 +24,8 @@ public class FJSSPSolver extends JobShopSolver {
      */
     @Override
     public void solve() {
-        // Initialize job operations for each job to 1
-        List<Integer> jobOperations = new ArrayList<>(Collections.nCopies(jobCount, 1));
-
         int j = 0;
-        while (jobOperationsStillNeedToBeProcessed(jobOperations)) {
+        while (jobOperationsStillNeedToBeProcessed()) {
             Map.Entry<Tuple3<Integer, Integer, Integer>, Integer> bestEntry = getBestMachineForJobOperation(j + 1, jobOperations.get(j));
             if (bestEntry != null) {
                 removeEntriesForJobAndOperation(j + 1, jobOperations.get(j));
@@ -53,11 +52,10 @@ public class FJSSPSolver extends JobShopSolver {
 
     /**
      *
-     * @param jobOperations list of the processed jobs operation (index i == job(i) + 1)
      * @return true, if there are unprocessed job operations
      *         false, otherwise
      */
-    private boolean jobOperationsStillNeedToBeProcessed(List<Integer> jobOperations) {
+     public boolean jobOperationsStillNeedToBeProcessed() {
         for (int j = 0; j < jobOperations.size(); ++j) {
             if (jobOperations.get(j) <= jobs.get(j).getOperations())
                 return true;
@@ -71,7 +69,7 @@ public class FJSSPSolver extends JobShopSolver {
      * @param operationId ID of the job operation
      * @return returns the machine ID which completed operation operationId - 1 for jobId
      */
-    int getMachineThatCompletedJobOperationBefore(int jobId, int operationId) {
+    public int getMachineThatCompletedJobOperationBefore(int jobId, int operationId) {
         for (Map.Entry<Integer, List<Tuple3<Integer, Integer, Integer>>> entry: sequences.entrySet()) {
             for (Tuple3<Integer, Integer, Integer> tuple : entry.getValue()) {
                 if (tuple.first() == jobId && tuple.second() == operationId - 1)
@@ -106,6 +104,13 @@ public class FJSSPSolver extends JobShopSolver {
     private void initializeMakespans() {
         for (int i = 0; i < machineCount; ++i)
             makespans.add(0);
+    }
+
+    /**
+     * Initialize the job operation for each job to the first one
+     */
+    private void initializeJobOperations() {
+        jobOperations = new ArrayList<>(Collections.nCopies(jobCount, 1));
     }
 
     /**
