@@ -1,0 +1,105 @@
+Luni,8-10,,6/II,IE3,Curs,Verificarea si validarea sistemelor soft,Lect. GACEANU Radu
+Luni,10-12,,6/II,IE3,Curs,Elaborarea lucrarii de licenta,Lect. STERCA Adrian
+Luni,16-18,,L336,931/2,Laborator,Verificarea si validarea sistemelor soft,C.d.asociat SZEDERJESI-DRAGOMIR Andra
+Marti,8-10,,L306,931/1,Laborator,Verificarea si validarea sistemelor soft,Lect. GACEANU Radu
+Marti,10-12,sapt. 1,C512,931,Seminar,Android Things,Lect. MIHOC Tudor
+Marti,14-16,,2/I,IE3,Curs,Android Things,Lect. MIHOC Tudor
+Marti,16-18,,2/I,IE3,Curs,Calcul numeric,Lect. SURDU Sabina
+Miercuri,8-10,sapt. 1,L302,931/1,Laborator,Calcul numeric,Drd. PETRUSEL Mara
+Miercuri,12-14,,2/I,IE3,Curs,Design patterns,Conf. CHIOREAN Dan
+Miercuri,14-16,sapt. 2,A321,931,Seminar,Calcul numeric,Lect. SURDU Sabina
+Miercuri,16-18,sapt. 1,C510,931,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,8-10,sapt. 1,L301,931/1,Laborator,Design patterns,Drd. Nutu Maria
+Joi,8-10,sapt. 2,L301,931/2,Laborator,Design patterns,Drd. Nutu Maria
+Joi,10-12,,A311,IE3,Curs,Istoria informaticii,Lect. MAGDAS Ioana
+Joi,12-14,,A308,IE3,Seminar,Istoria informaticii,Lect. MAGDAS Ioana
+Joi,14-16,,6/II,931,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Vineri,12-14,,L301,931/1,Laborator,Elaborarea lucrarii de licenta,Asist. BADARINZA Ioan
+Vineri,14-16,sapt. 2,L336,931/1,Laborator,Android Things,Lect. MIHOC Tudor
+Vineri,14-16,sapt. 1,L336,931/2,Laborator,Android Things,Lect. MIHOC Tudor
+Vineri,16-18,,L308,931/2,Laborator,Elaborarea lucrarii de licenta,Lect. STERCA Adrian
+Vineri,18-20,sapt. 1,L339,931/2,Laborator,Calcul numeric,Drd. CRIVEI Liana
+Luni,14-16,,L308,932/1,Laborator,Elaborarea lucrarii de licenta,Lect. STERCA Adrian
+Luni,16-18,,L301,932/1,Laborator,Verificarea si validarea sistemelor soft,Lect. GACEANU Radu
+Luni,18-20,sapt. 2,L302,932/1,Laborator,Android Things,Lect. MIHOC Tudor
+Luni,18-20,sapt. 1,L302,932/2,Laborator,Android Things,Lect. MIHOC Tudor
+Marti,8-10,sapt. 1,L336,932/1,Laborator,Calcul numeric,Lect. CIUCIU Ioana
+Marti,8-10,sapt. 2,L336,932/2,Laborator,Calcul numeric,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,C512,932,Seminar,Android Things,Lect. MIHOC Tudor
+Miercuri,14-16,sapt. 1,A321,932,Seminar,Calcul numeric,Lect. SURDU Sabina
+Miercuri,16-18,sapt. 2,C510,932,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 2,L002,932/1,Laborator,Design patterns,Drd. Nutu Maria
+Joi,12-14,sapt. 1,L002,932/2,Laborator,Design patterns,Drd. Nutu Maria
+Joi,14-16,,6/II,932,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Vineri,14-16,,L002,932/2,Laborator,Verificarea si validarea sistemelor soft,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,16-18,,L302,932/2,Laborator,Elaborarea lucrarii de licenta,C.d.asociat SIPOS-LASCU Roxana
+Luni,14-16,,L301,933/1,Laborator,Verificarea si validarea sistemelor soft,Lect. GACEANU Radu
+Luni,14-16,,L343,933/2,Laborator,Elaborarea lucrarii de licenta,Drd. CRISTEA Daniela
+Luni,16-18,sapt. 2,L302,933/1,Laborator,Android Things,Lect. MIHOC Tudor
+Luni,16-18,sapt. 1,L302,933/2,Laborator,Android Things,Lect. MIHOC Tudor
+Luni,18-20,,L301,933/2,Laborator,Verificarea si validarea sistemelor soft,Lect. GACEANU Radu
+Luni,18-20,,L339,933/1,Laborator,Elaborarea lucrarii de licenta,Drd. CRISTEA Daniela
+Marti,10-12,sapt. 1,L336,933/1,Laborator,Calcul numeric,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,L336,933/2,Laborator,Calcul numeric,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,L338,933/1,Laborator,Design patterns,Drd. MARINESCU Alexandru
+Marti,10-12,sapt. 1,L338,933/2,Laborator,Design patterns,Drd. MARINESCU Alexandru
+Marti,18-20,sapt. 2,7/I,933,Seminar,Calcul numeric,Drd. PETRUSEL Mara
+Joi,10-12,sapt. 1,C510,933,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 1,C512,933,Seminar,Android Things,Lect. MIHOC Tudor
+Vineri,12-14,,6/II,933,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Luni,14-16,sapt. 2,L302,934/1,Laborator,Android Things,Lect. MIHOC Tudor
+Luni,14-16,sapt. 1,L302,934/2,Laborator,Android Things,Lect. MIHOC Tudor
+Luni,16-18,sapt. 2,L439,934/1,Laborator,Design patterns,Drd. MARINESCU Alexandru
+Luni,16-18,sapt. 1,L439,934/2,Laborator,Design patterns,Drd. MARINESCU Alexandru
+Marti,8-10,,L308,934/2,Laborator,Elaborarea lucrarii de licenta,Asist. BADARINZA Ioan
+Marti,10-12,,L306,934/1,Laborator,Verificarea si validarea sistemelor soft,Lect. GACEANU Radu
+Marti,10-12,,L307,934/2,Laborator,Verificarea si validarea sistemelor soft,Lect. SERBAN Camelia
+Miercuri,16-18,sapt. 2,A311,934,Seminar,Calcul numeric,Lect. SURDU Sabina
+Joi,8-10,,L336,934/1,Laborator,Elaborarea lucrarii de licenta,Asist. BADARINZA Ioan
+Joi,10-12,sapt. 2,C510,934,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 2,C512,934,Seminar,Android Things,Lect. MIHOC Tudor
+Joi,14-16,,6/II,934,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Vineri,14-16,sapt. 2,L306,934/1,Laborator,Calcul numeric,Drd. Andor Camelia
+Vineri,18-20,sapt. 2,L339,934/2,Laborator,Calcul numeric,Drd. CRIVEI Liana
+Luni,14-16,sapt. 1,L321,935/2,Laborator,Design patterns,Drd. MARINESCU Alexandru
+Luni,16-18,,L339,935/2,Laborator,Elaborarea lucrarii de licenta,Drd. CRISTEA Daniela
+Luni,18-20,,L321,935/1,Laborator,Verificarea si validarea sistemelor soft,Lect. POP Andreea
+Marti,10-12,sapt. 1,C510,935,Seminar,Calcul numeric,Asist. POP Emilia
+Miercuri,8-10,,L307,935/2,Laborator,Verificarea si validarea sistemelor soft,Lect. SERBAN Camelia
+Joi,8-10,sapt. 2,L402,935/2,Laborator,Android Things,Lect. MIHOC Tudor
+Joi,12-14,sapt. 1,C510,935,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,18-20,sapt. 2,L306,935/1,Laborator,Calcul numeric,Drd. PETRUSEL Mara
+Joi,18-20,sapt. 1,L306,935/2,Laborator,Calcul numeric,Drd. PETRUSEL Mara
+Vineri,8-10,sapt. 1,C512,935,Seminar,Android Things,Lect. MIHOC Tudor
+Vineri,10-12,,L301,935/1,Laborator,Elaborarea lucrarii de licenta,Asist. BADARINZA Ioan
+Vineri,12-14,sapt. 2,L336,935/1,Laborator,Android Things,Lect. MIHOC Tudor
+Vineri,14-16,,2/I,935,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Vineri,16-18,sapt. 1,L002,935/1,Laborator,Design patterns,Drd. BORODI Flavia
+Luni,14-16,sapt. 2,L321,936/1,Laborator,Design patterns,Drd. MARINESCU Alexandru
+Luni,16-18,,L321,936/1,Laborator,Verificarea si validarea sistemelor soft,Lect. POP Andreea
+Luni,18-20,,L336,936/2,Laborator,Verificarea si validarea sistemelor soft,C.d.asociat SZEDERJESI-DRAGOMIR Andra
+Joi,10-12,sapt. 2,L002,936/2,Laborator,Design patterns,Drd. Nutu Maria
+Joi,12-14,sapt. 2,C510,936,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,16-18,sapt. 2,L306,936/1,Laborator,Calcul numeric,Drd. PETRUSEL Mara
+Joi,16-18,sapt. 1,L306,936/2,Laborator,Calcul numeric,Drd. PETRUSEL Mara
+Joi,18-20,,L336,936/2,Laborator,Elaborarea lucrarii de licenta,C.d.asociat MORARU Alexandru
+Vineri,8-10,,L301,936/1,Laborator,Elaborarea lucrarii de licenta,Asist. BADARINZA Ioan
+Vineri,10-12,sapt. 2,L336,936/1,Laborator,Android Things,Lect. MIHOC Tudor
+Vineri,10-12,sapt. 1,L336,936/2,Laborator,Android Things,Lect. MIHOC Tudor
+Vineri,12-14,sapt. 1,L001,936,Seminar,Android Things,Lect. MIHOC Tudor
+Vineri,14-16,sapt. 2,7/I,936,Seminar,Calcul numeric,Lect. SURDU Sabina
+Vineri,16-18,,2/I,936,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Marti,8-10,sapt. 2,C510,937,Seminar,Android Things,Lect. MIHOC Tudor
+Miercuri,16-18,sapt. 1,A322,937,Seminar,Calcul numeric,Lect. SURDU Sabina
+Joi,8-10,sapt. 1,L402,937/2,Laborator,Android Things,Lect. MIHOC Tudor
+Joi,10-12,sapt. 1,L002,937/2,Laborator,Design patterns,Drd. Nutu Maria
+Joi,14-16,sapt. 2,L001,937,Seminar,Design patterns,Conf. CHIOREAN Dan
+Joi,16-18,,9/I,937,Seminar,Fundamentele limbajelor de programare,Drd. Nemes Borbala
+Vineri,8-10,sapt. 2,L336,937/1,Laborator,Android Things,Lect. MIHOC Tudor
+Vineri,10-12,,L002,937/2,Laborator,Verificarea si validarea sistemelor soft,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,12-14,,L002,937/1,Laborator,Verificarea si validarea sistemelor soft,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,14-16,sapt. 1,L306,937/1,Laborator,Design patterns,Drd. BORODI Flavia
+Vineri,16-18,sapt. 1,L339,937/1,Laborator,Calcul numeric,Drd. CRIVEI Liana
+Vineri,16-18,sapt. 2,L339,937/2,Laborator,Calcul numeric,Drd. CRIVEI Liana
+Vineri,18-20,,L302,937/1,Laborator,Elaborarea lucrarii de licenta,C.d.asociat SIPOS-LASCU Roxana
+Vineri,18-20,,L343,937/2,Laborator,Elaborarea lucrarii de licenta,C.d.asociat MORARU Alexandru

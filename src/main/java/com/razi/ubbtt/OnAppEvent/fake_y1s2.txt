@@ -1,0 +1,91 @@
+Luni,8-10,,6/II,IE1,Curs,Programare orientata obiect,Lect. GACEANU Radu
+Luni,10-12,,6/II,IE1,Curs,Geometrie,Lect. STERCA Adrian
+Luni,16-18,,L336,911/2,Laborator,Programare orientata obiect,C.d.asociat SZEDERJESI-DRAGOMIR Andra
+Marti,8-10,,L306,911/1,Laborator,Programare orientata obiect,Lect. GACEANU Radu
+Marti,10-12,sapt. 1,C512,911,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Marti,14-16,,2/I,IE1,Curs,Algoritmica grafelor,Lect. MIHOC Tudor
+Marti,16-18,,2/I,IE1,Curs,Sisteme dinamice,Lect. SURDU Sabina
+Miercuri,8-10,sapt. 1,L302,911/1,Laborator,Sisteme dinamice,Drd. PETRUSEL Mara
+Miercuri,12-14,,2/I,IE1,Curs,Sisteme de operare,Conf. CHIOREAN Dan
+Miercuri,14-16,sapt. 2,A321,911,Seminar,Sisteme dinamice,Lect. SURDU Sabina
+Miercuri,16-18,sapt. 1,C510,911,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,8-10,sapt. 1,L301,911/1,Laborator,Sisteme de operare,Drd. Nutu Maria
+Joi,8-10,sapt. 2,L301,911/2,Laborator,Sisteme de operare,Drd. Nutu Maria
+Joi,10-12,,A311,IE1,Curs,Fundamentele pedagogiei,Lect. MAGDAS Ioana
+Joi,12-14,,A308,IE1,Seminar,Fundamentele pedagogiei,Lect. MAGDAS Ioana
+Joi,14-16,,6/II,911,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Vineri,14-16,sapt. 2,L336,911/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,14-16,sapt. 1,L336,911/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,18-20,sapt. 1,L339,911/2,Laborator,Sisteme dinamice,Drd. CRIVEI Liana
+Luni,16-18,,L301,912/1,Laborator,Programare orientata obiect,Lect. GACEANU Radu
+Luni,18-20,sapt. 2,L302,912/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Luni,18-20,sapt. 1,L302,912/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Marti,8-10,sapt. 1,L336,912/1,Laborator,Sisteme dinamice,Lect. CIUCIU Ioana
+Marti,8-10,sapt. 2,L336,912/2,Laborator,Sisteme dinamice,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,C512,912,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Miercuri,14-16,sapt. 1,A321,912,Seminar,Sisteme dinamice,Lect. SURDU Sabina
+Miercuri,16-18,sapt. 2,C510,912,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 2,L002,912/1,Laborator,Sisteme de operare,Drd. Nutu Maria
+Joi,12-14,sapt. 1,L002,912/2,Laborator,Sisteme de operare,Drd. Nutu Maria
+Joi,14-16,,6/II,912,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Vineri,14-16,,L002,912/2,Laborator,Programare orientata obiect,Drd. SZEDERJESI-DRAGOMIR Arnold
+Luni,14-16,,L301,913/1,Laborator,Programare orientata obiect,Lect. GACEANU Radu
+Luni,16-18,sapt. 2,L302,913/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Luni,16-18,sapt. 1,L302,913/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Luni,18-20,,L301,913/2,Laborator,Programare orientata obiect,Lect. GACEANU Radu
+Marti,10-12,sapt. 1,L336,913/1,Laborator,Sisteme dinamice,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,L336,913/2,Laborator,Sisteme dinamice,Lect. CIUCIU Ioana
+Marti,10-12,sapt. 2,L338,913/1,Laborator,Sisteme de operare,Drd. MARINESCU Alexandru
+Marti,10-12,sapt. 1,L338,913/2,Laborator,Sisteme de operare,Drd. MARINESCU Alexandru
+Marti,18-20,sapt. 2,7/I,913,Seminar,Sisteme dinamice,Drd. PETRUSEL Mara
+Joi,10-12,sapt. 1,C510,913,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 1,C512,913,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,12-14,,6/II,913,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Luni,14-16,sapt. 2,L302,914/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Luni,14-16,sapt. 1,L302,914/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Luni,16-18,sapt. 2,L439,914/1,Laborator,Sisteme de operare,Drd. MARINESCU Alexandru
+Luni,16-18,sapt. 1,L439,914/2,Laborator,Sisteme de operare,Drd. MARINESCU Alexandru
+Marti,10-12,,L306,914/1,Laborator,Programare orientata obiect,Lect. GACEANU Radu
+Marti,10-12,,L307,914/2,Laborator,Programare orientata obiect,Lect. SERBAN Camelia
+Miercuri,16-18,sapt. 2,A311,914,Seminar,Sisteme dinamice,Lect. SURDU Sabina
+Joi,10-12,sapt. 2,C510,914,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,12-14,sapt. 2,C512,914,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Joi,14-16,,6/II,914,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Vineri,14-16,sapt. 2,L306,914/1,Laborator,Sisteme dinamice,Drd. Andor Camelia
+Vineri,18-20,sapt. 2,L339,914/2,Laborator,Sisteme dinamice,Drd. CRIVEI Liana
+Luni,14-16,sapt. 1,L321,915/2,Laborator,Sisteme de operare,Drd. MARINESCU Alexandru
+Luni,18-20,,L321,915/1,Laborator,Programare orientata obiect,Lect. POP Andreea
+Marti,10-12,sapt. 1,C510,915,Seminar,Sisteme dinamice,Asist. POP Emilia
+Miercuri,8-10,,L307,915/2,Laborator,Programare orientata obiect,Lect. SERBAN Camelia
+Joi,8-10,sapt. 2,L402,915/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Joi,12-14,sapt. 1,C510,915,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,18-20,sapt. 2,L306,915/1,Laborator,Sisteme dinamice,Drd. PETRUSEL Mara
+Joi,18-20,sapt. 1,L306,915/2,Laborator,Sisteme dinamice,Drd. PETRUSEL Mara
+Vineri,8-10,sapt. 1,C512,915,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,12-14,sapt. 2,L336,915/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,14-16,,2/I,915,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Vineri,16-18,sapt. 1,L002,915/1,Laborator,Sisteme de operare,Drd. BORODI Flavia
+Luni,14-16,sapt. 2,L321,916/1,Laborator,Sisteme de operare,Drd. MARINESCU Alexandru
+Luni,16-18,,L321,916/1,Laborator,Programare orientata obiect,Lect. POP Andreea
+Luni,18-20,,L336,916/2,Laborator,Programare orientata obiect,C.d.asociat SZEDERJESI-DRAGOMIR Andra
+Joi,10-12,sapt. 2,L002,916/2,Laborator,Sisteme de operare,Drd. Nutu Maria
+Joi,12-14,sapt. 2,C510,916,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,16-18,sapt. 2,L306,916/1,Laborator,Sisteme dinamice,Drd. PETRUSEL Mara
+Joi,16-18,sapt. 1,L306,916/2,Laborator,Sisteme dinamice,Drd. PETRUSEL Mara
+Vineri,10-12,sapt. 2,L336,916/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,10-12,sapt. 1,L336,916/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,12-14,sapt. 1,L001,916,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,14-16,sapt. 2,7/I,916,Seminar,Sisteme dinamice,Lect. SURDU Sabina
+Vineri,16-18,,2/I,916,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Marti,8-10,sapt. 2,C510,917,Seminar,Algoritmica grafelor,Lect. MIHOC Tudor
+Miercuri,16-18,sapt. 1,A322,917,Seminar,Sisteme dinamice,Lect. SURDU Sabina
+Joi,8-10,sapt. 1,L402,917/2,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Joi,10-12,sapt. 1,L002,917/2,Laborator,Sisteme de operare,Drd. Nutu Maria
+Joi,14-16,sapt. 2,L001,917,Seminar,Sisteme de operare,Conf. CHIOREAN Dan
+Joi,16-18,,9/I,917,Seminar,Structuri de date si algoritmi,Drd. Nemes Borbala
+Vineri,8-10,sapt. 2,L336,917/1,Laborator,Algoritmica grafelor,Lect. MIHOC Tudor
+Vineri,10-12,,L002,917/2,Laborator,Programare orientata obiect,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,12-14,,L002,917/1,Laborator,Programare orientata obiect,Drd. SZEDERJESI-DRAGOMIR Arnold
+Vineri,14-16,sapt. 1,L306,917/1,Laborator,Sisteme de operare,Drd. BORODI Flavia
+Vineri,16-18,sapt. 1,L339,917/1,Laborator,Sisteme dinamice,Drd. CRIVEI Liana
+Vineri,16-18,sapt. 2,L339,917/2,Laborator,Sisteme dinamice,Drd. CRIVEI Liana
